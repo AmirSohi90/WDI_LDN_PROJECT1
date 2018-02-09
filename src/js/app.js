@@ -18,6 +18,8 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   let timer = 30;
+  let timerId = null;
+  let runningTimer = false;
   countdown.innerHTML = timer;
 
   console.log(randomTime(200, 2000));
@@ -30,14 +32,13 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   console.log(randomPot(pots));
 
-  let timerId = null;
-  let runningTimer = false;
 
   start.addEventListener('click', function(){
     if(!runningTimer){
       runningTimer = true;
       timerId = setInterval(() => {
         timer -=  1;
+        start.innerHTML = 'Pause';
         if(timer === 0){
           clearInterval(timerId);
         }
@@ -45,6 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log(timer);
       }, 1000);
     } else {
+      start.innerHTML = 'Start';
       runningTimer = false;
       clearInterval(timerId);
     }
