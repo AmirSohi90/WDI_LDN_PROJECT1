@@ -16,84 +16,38 @@ header{
   justify-content: space-between;
   height: 50px;
   background-color: blue;
-  margin-bottom: 10px;
   .time{
     width: 50px;
     height: 50px;
     text-align: center;
-    padding-left: 50px;
+    margin-left: 50px;
   }
   .score{
     width: 50px;
     height: 50px;
     text-align: center;
-    padding-right: 50px;
+    margin-right: 50px;
   }
 }
+
+
 .main-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.sub-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-.food-and-pot-one{
+  width: 400px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  .food{
-    width: 75px;
-    height: 75px;
-    background-color: grey;
-  }
-  .pot{
-    width:75px;
-    height:75px;
-    background-color: purple;
+  flex-wrap: wrap;
+  margin: auto;
+  .whack{
+    margin: 2.5px 5px 2.5px 5px;
+    width: 115px;
+    height: 115px;
+    background-color: pink;
   }
 }
-
-.food-and-pot-two{
+.start{
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  .food{
-    width: 75px;
-    height: 75px;
-    background-color: grey;
-  }
-  .pot{
-    width:75px;
-    height:75px;
-    background-color: purple;
-  }
-}
-
-.food-and-pot-three{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  .food{
-    width: 75px;
-    height: 75px;
-    background-color: grey;
-  }
-  .pot{
-    width:75px;
-    height:75px;
-    background-color: purple;
-  }
-}
-
-button{
-
+  margin-top: 10px;
 }
