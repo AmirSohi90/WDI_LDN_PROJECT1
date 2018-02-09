@@ -13,7 +13,24 @@ header{
     font-size: 15px;
     background-color: grey;
 }
-
 main{
 
+}
+.time-and-score{
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  background-color: blue;
+  .time{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding-left: 50px;
+  }
+  .score{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding-right: 50px;
+  }
 }
