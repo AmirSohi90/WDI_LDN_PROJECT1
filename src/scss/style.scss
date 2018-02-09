@@ -1,6 +1,22 @@
+*{
+  box-sizing: border-box;
+}
+
 body{
+  max-width: 960px;
   background-color: green;
 }
-h1{
-  text-align: center;
+
+header{
+  max-width: 960px;
+  background-color: grey;
+  .header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+main{
+
 }
