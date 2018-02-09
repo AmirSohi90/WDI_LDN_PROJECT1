@@ -13,8 +13,17 @@ window.addEventListener('DOMContentLoaded', () => {
   console.log(start);
 
   function randomTime(min, max) {
-    let popUpTime = Math.round(Math.random() * (max - min) + min);
+    const popUpTime = Math.round(Math.random() * (max - min) + min);
     return popUpTime;
   }
   console.log(randomTime(200, 2000));
+
+  function randomPot(pots){
+    const potIndex = Math.floor(Math.random() * pots.length);
+    // console.log(potIndex);
+    // console.log(pots[0]);
+    const pot = pots[potIndex];
+    return pot;
+  }
+  console.log(randomPot(pots));
 });
