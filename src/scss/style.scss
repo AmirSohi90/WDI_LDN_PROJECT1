@@ -16,6 +16,7 @@ header{
   justify-content: space-between;
   height: 50px;
   background-color: blue;
+  margin-bottom: 5px;
   .time{
     width: 50px;
     height: 50px;
@@ -40,14 +41,17 @@ header{
   flex-wrap: wrap;
   margin: auto;
   .whack{
-    margin: 2.5px 5px 2.5px 5px;
     width: 115px;
     height: 115px;
+    margin: 0 9px;
     background-color: pink;
   }
 }
 .start{
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px;
+}
+.change-color{
+  background-color: yellow;
 }
