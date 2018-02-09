@@ -1,26 +1,22 @@
 
 
-body{
+body {
   background-color: green;
 }
 
 header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    height: 50px;
-    font-size: 15px;
-    background-color: grey;
+  height: 30px;
+  font-size: 15px;
+  background-color: grey;
+  text-align: center;
 }
-main{
 
-}
 .time-and-score{
   display: flex;
   justify-content: space-between;
   height: 50px;
   background-color: blue;
+  margin-bottom: 10px;
   .time{
     width: 50px;
     height: 50px;
@@ -33,4 +29,71 @@ main{
     text-align: center;
     padding-right: 50px;
   }
+}
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sub-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.food-and-pot-one{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .food{
+    width: 75px;
+    height: 75px;
+    background-color: grey;
+  }
+  .pot{
+    width:75px;
+    height:75px;
+    background-color: purple;
+  }
+}
+
+.food-and-pot-two{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .food{
+    width: 75px;
+    height: 75px;
+    background-color: grey;
+  }
+  .pot{
+    width:75px;
+    height:75px;
+    background-color: purple;
+  }
+}
+
+.food-and-pot-three{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .food{
+    width: 75px;
+    height: 75px;
+    background-color: grey;
+  }
+  .pot{
+    width:75px;
+    height:75px;
+    background-color: purple;
+  }
+}
+
+button{
+
 }
