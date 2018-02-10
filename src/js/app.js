@@ -1,19 +1,21 @@
+let timer = 10;
+// let gameOn = false;
+let lastPot;
+let timeUp = false;
+let scoreCounter = 0;
 window.addEventListener('DOMContentLoaded', () => {
 
   const countdown = document.querySelector('.timer-countdown');
 
   const score = document.querySelector('.score-board');
 
-  const start = document.querySelector('.start');
+  const start = document.querySelector('.start-div');
+
+  const startBtn = document.querySelector('.start-button');
 
   const pots = document.querySelectorAll('.pot');
 
   //random time for food to pop up and down
-  let timer = 10;
-  let gameOn = false;
-  let lastPot;
-  let timeUp = false;
-  let scoreCounter = 0;
   score.textContent = scoreCounter;
   countdown.textContent = timer;
 
@@ -45,10 +47,11 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
-    gameOn = true;
-    if(gameOn === true){
-      start.classList.add('hide');
-    }
+    startBtn.disabled = true;
+    // gameOn = true;
+    // if(gameOn === true){
+    //   start.classList.add('hide');
+    // }
     timer = 10;
     countdown.textContent = timer;
     scoreCounter = 0;
@@ -59,10 +62,11 @@ window.addEventListener('DOMContentLoaded', () => {
       timer -= 1;
       countdown.textContent = timer;
       if(timer === 0){
-        gameOn = false;
-        if(gameOn === false){
-          start.classList.remove('hide');
-        }
+        startBtn.disabled = false;
+        // gameOn = false;
+        // if(gameOn === false){
+        //   start.classList.remove('hide');
+        // }
         clearInterval(timerId);
         timeUp = true;
       }
@@ -70,7 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  start.addEventListener('click', startGame);
+  startBtn.addEventListener('click', startGame);
 
   function hit(e) {
     if(!e.isTrusted) return;
@@ -80,7 +84,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     score.textContent = scoreCounter;
   }
-
 
   pots.forEach(pot => pot.addEventListener('click', hit));
 
