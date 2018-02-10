@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //random time for food to pop up and down
   let timer = 10;
+  let gameOn = false;
   let lastPot;
   let timeUp = false;
   let scoreCounter = 0;
@@ -44,6 +45,10 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
+    gameOn = true;
+    if(gameOn === true){
+      start.classList.add('hide');
+    }
     timer = 10;
     countdown.textContent = timer;
     scoreCounter = 0;
@@ -54,6 +59,10 @@ window.addEventListener('DOMContentLoaded', () => {
       timer -= 1;
       countdown.textContent = timer;
       if(timer === 0){
+        gameOn = false;
+        if(gameOn === false){
+          start.classList.remove('hide');
+        }
         clearInterval(timerId);
         timeUp = true;
       }
