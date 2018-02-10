@@ -21,8 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
     return popUpTime;
   }
 
-  console.log(randomTime(200, 2000));
-
   function randomPot(pots) {
     const index = Math.floor(Math.random() * pots.length);
     const pot = pots[index];
@@ -35,17 +33,28 @@ window.addEventListener('DOMContentLoaded', () => {
     return pot;
   }
 
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
-  console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
+  // console.log(randomPot(pots));
 
+  function peak (){
+    const time = randomTime(200, 2000);
+    const pot = randomPot(pots);
+    pot.classList.add('change-color');
+    setTimeout(() => {
+      pot.classList.remove('change-color');
+    }, time);
+    return time, pot;
+  }
+
+  console.log(peak());
 
   start.addEventListener('click', function(){
     if(!runningTimer){

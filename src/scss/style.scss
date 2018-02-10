@@ -40,18 +40,21 @@ header{
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
-  .pot{
-    width: 115px;
-    height: 115px;
-    margin: 0 9px;
-    background-color: pink;
-  }
 }
+
+.pot{
+  width: 115px;
+  height: 115px;
+  margin: 0 9px;
+  background-color: pink;
+}
+
 .start{
   display: flex;
   justify-content: center;
   margin-top: 5px;
 }
+
 .change-color{
   background-color: yellow;
 }
