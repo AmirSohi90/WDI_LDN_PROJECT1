@@ -3,33 +3,47 @@ window.addEventListener('DOMContentLoaded', () => {
   const countdown = document.querySelector('.timer-countdown');
   console.log(countdown);
 
-  const scoreCount = document.querySelector('.score');
-  console.log(scoreCount);
-
-  const pots = document.querySelectorAll('.whack');
-  console.log(pots);
-
   const start = document.querySelector('.start');
   console.log(start);
+
+  const pots = document.querySelectorAll('.pot');
+
   //random time for food to pop up and down
-  function randomTime(min, max) {
-    const popUpTime = Math.round(Math.random() * (max - min) + min);
-    return popUpTime;
-  }
 
   let timer = 30;
   let timerId = null;
   let runningTimer = false;
+  let lastPot;
   countdown.innerHTML = timer;
+
+  function randomTime(min, max) {
+    const popUpTime = Math.round(Math.random() * (max-min) + min);
+    return popUpTime;
+  }
 
   console.log(randomTime(200, 2000));
 
-  //function to get random pots
-  function randomPot(pots){
-    const potIndex = Math.floor(Math.random() * pots.length);
-    const pot = pots[potIndex];
+  function randomPot(pots) {
+    const index = Math.floor(Math.random() * pots.length);
+    const pot = pots[index];
+    if(pot === lastPot){
+      console.log('You stop that, you!');
+      return randomPot(pots);
+    }
+
+    lastPot = pot; // saves the reference of which one got popped up
     return pot;
   }
+
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
+  console.log(randomPot(pots));
   console.log(randomPot(pots));
 
 
