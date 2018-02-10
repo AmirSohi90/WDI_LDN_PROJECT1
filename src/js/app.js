@@ -1,7 +1,9 @@
-let timer = 10;
+let timer = 30;
 let lastPot;
 let timeUp = false;
 let scoreCounter = 0;
+let min = 500;
+let max = 2000;
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -19,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function randomTime(min, max) {
     const popUpTime = Math.round(Math.random() * (max-min) + min);
+    console.log(popUpTime);
     return popUpTime;
   }
 
@@ -28,8 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if(pot === lastPot){
       return randomPot(pots);
     }
-
-    lastPot = pot; // saves the reference of which one got popped up
+    lastPot = pot;
     return pot;
   }
 
@@ -39,7 +41,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const y = Math.floor(Math.random() * 256);
     const z = Math.floor(Math.random() * 256);
     const newColor = 'rgb(' + x + ',' + y + ',' + z + ')';
-    const time = randomTime(100, 1000);
+    //check if commented out section below works properly
+    // if(scoreCounter === 10 || scoreCounter === 20){
+    //   max -= 500;
+    // }
+    // if(max < 1000){
+    //   max = 1000;
+    // }
+    const time = randomTime(min, max);
     const pot = randomPot(pots);
     pot.classList.add('change-color');
     if(pot.classList.contains('change-color')){
@@ -55,7 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function startGame() {
     startBtn.disabled = true;
-    timer = 10;
+    timer = 30;
     countdown.textContent = timer;
     scoreCounter = 0;
     score.textContent = 0;
@@ -76,7 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
   startBtn.addEventListener('click', startGame);
 
   function hit(e) {
-    if(!e.isTrusted) return;
     if(e.target.classList.contains('change-color')){
       scoreCounter++;
       this.classList.remove('change-color');
