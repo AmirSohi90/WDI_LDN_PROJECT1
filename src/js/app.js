@@ -1,20 +1,22 @@
 window.addEventListener('DOMContentLoaded', () => {
 
   const countdown = document.querySelector('.timer-countdown');
-  console.log(countdown);
+
+  const score = document.querySelector('.score-board');
 
   const start = document.querySelector('.start');
-  console.log(start);
 
   const pots = document.querySelectorAll('.pot');
 
   //random time for food to pop up and down
-
-  let timer = 30;
-  let timerId = null;
-  let runningTimer = false;
+  let timer = 5;
+  // let timerId = null;
+  // let runningTimer = false;
   let lastPot;
-  countdown.innerHTML = timer;
+  let timeUp = false;
+  let scoreCounter = 0;
+  score.textContent = scoreCounter;
+  countdown.textContent = timer;
 
   function randomTime(min, max) {
     const popUpTime = Math.round(Math.random() * (max-min) + min);
@@ -25,7 +27,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const index = Math.floor(Math.random() * pots.length);
     const pot = pots[index];
     if(pot === lastPot){
-      console.log('You stop that, you!');
       return randomPot(pots);
     }
 
@@ -33,46 +34,48 @@ window.addEventListener('DOMContentLoaded', () => {
     return pot;
   }
 
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-  // console.log(randomPot(pots));
-
   function peak (){
     const time = randomTime(200, 2000);
     const pot = randomPot(pots);
     pot.classList.add('change-color');
     setTimeout(() => {
       pot.classList.remove('change-color');
+      if(!timeUp) peak();
     }, time);
     return time, pot;
   }
 
-  console.log(peak());
+  function startGame() {
+    timer = 5;
+    scoreCounter = 0;
+    score.textContent = 0;
+    timeUp = false;
+    peak();
+    setInterval(() => {
+      timeUp = true;
+    }, 5000);
+    let timerId = setInterval(() => {
+      timer -= 1;
+      countdown.textContent = timer;
+      if(timer === 0){
+        clearInterval(timerId);
+      }
+    }, 1000);
+  }
 
-  start.addEventListener('click', function(){
-    if(!runningTimer){
-      runningTimer = true;
-      timerId = setInterval(() => {
-        timer -=  1;
-        start.innerHTML = 'Pause';
-        if(timer === 0){
-          clearInterval(timerId);
-        }
-        countdown.innerHTML = timer;
-        console.log(timer);
-      }, 1000);
-    } else {
-      start.innerHTML = 'Start';
-      runningTimer = false;
-      clearInterval(timerId);
+
+  start.addEventListener('click', startGame);
+
+  function hit(e) {
+    if(!e.isTrusted) return;
+    if(e.target.classList.contains('change-color')){
+      scoreCounter++;
+      this.classList.remove('change-color');
     }
-  });
+    score.textContent = scoreCounter;
+  }
+
+
+  pots.forEach(pot => pot.addEventListener('click', hit));
 
 });
