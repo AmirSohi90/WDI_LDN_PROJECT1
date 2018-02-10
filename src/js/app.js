@@ -9,9 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const pots = document.querySelectorAll('.pot');
 
   //random time for food to pop up and down
-  let timer = 5;
-  // let timerId = null;
-  // let runningTimer = false;
+  let timer = 10;
   let lastPot;
   let timeUp = false;
   let scoreCounter = 0;
@@ -35,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function peak (){
-    const time = randomTime(200, 2000);
+    const time = randomTime(100, 1000);
     const pot = randomPot(pots);
     pot.classList.add('change-color');
     setTimeout(() => {
@@ -46,19 +44,18 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
-    timer = 5;
+    timer = 10;
+    countdown.textContent = timer;
     scoreCounter = 0;
     score.textContent = 0;
     timeUp = false;
     peak();
-    setInterval(() => {
-      timeUp = true;
-    }, 5000);
-    let timerId = setInterval(() => {
+    const timerId = setInterval(() => {
       timer -= 1;
       countdown.textContent = timer;
       if(timer === 0){
         clearInterval(timerId);
+        timeUp = true;
       }
     }, 1000);
   }
