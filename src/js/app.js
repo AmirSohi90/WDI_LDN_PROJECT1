@@ -27,6 +27,50 @@ window.addEventListener('DOMContentLoaded', () => {
     {
       name: 'onion',
       image: '/images/onion.png'
+    },
+    {
+      name: 'buns',
+      image: '/images/buns.png'
+    },
+    {
+      name: 'cheese',
+      image: '/images/cheese.png'
+    },
+    {
+      name: 'chicken',
+      image: '/images/chicken.png'
+    },
+    {
+      name: 'egg',
+      image: '/images/egg.png'
+    },
+    {
+      name: 'gherkin',
+      image: '/images/gherkin.png'
+    },
+    {
+      name: 'lemon',
+      image: '/images/lettuce.png'
+    },
+    {
+      name: 'lettuce',
+      image: '/images/lettuce.png'
+    },
+    {
+      name: 'peas',
+      image: '/images/peas.png'
+    },
+    {
+      name: 'pepper',
+      image: '/images/pepper.png'
+    },
+    {
+      name: 'prawn',
+      image: '/images/prawn.png'
+    },
+    {
+      name: 'soysauce',
+      image: '/images/soysauce.png'
     }
   ];
 
@@ -120,7 +164,6 @@ window.addEventListener('DOMContentLoaded', () => {
     if(e.target.classList.contains('point')){
       scoreCounter++;
       e.target.innerHTML = `<img src="${randomIngredient()}" class="point popDown">`;
-      e.target.classList.remove('point');
     }
     score.textContent = scoreCounter;
   }

@@ -92,6 +92,13 @@ h2 {
   border: 2px solid black;
 }
 
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .start-div{
   display: flex;
   justify-content: center;
@@ -123,6 +130,10 @@ h2 {
 .popDown{
   position: relative;
   animation: popDown 1s linear;
+}
+
+.hide{
+  display: none;
 }
 
 @keyframes popUp {
