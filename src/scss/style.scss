@@ -60,13 +60,21 @@ header{
 }
 
 .pot{
+  position: relative;
   width: 115px;
   height: 115px;
   margin: 0 9px;
   display: flex;
-  justify-content: center;
-  align-items: baseline;
+  justify-content:space-between;
+  align-items: center;
   margin: auto;
+  flex-direction: column;
+}
+
+.front-pot{
+  position: absolute;
+  top: 40px;
+  z-index: 1;
 }
 
 .chef{
@@ -84,10 +92,6 @@ header{
   margin-top: 5px;
 }
 
-.change-color{
-
-}
-
 .timer-countdown, .score-board{
   line-height: 3rem;
 }
@@ -95,6 +99,11 @@ header{
 .hide{
   display: none;
 }
-img{
-  margin: 40px 0 auto;
+
+.point{
+  // position: absolute;
+  // top: 100%;
+  // width: 100%;
+  // height: 100%;
+  // transition: all 0.4s;
 }

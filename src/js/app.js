@@ -1,11 +1,34 @@
 let timer = 30;
-let lastPot;
+let lastImage;
 let timeUp = false;
 let scoreCounter = 0;
 let min = 500;
 let max = 2000;
 
 window.addEventListener('DOMContentLoaded', () => {
+
+  const ingredients = [
+    {
+      name: 'carrot',
+      image: '/images/carrot.png'
+    },
+    {
+      name: 'beef',
+      image: '/images/beef.png'
+    },
+    {
+      name: 'garlic',
+      image: '/images/garlic.png'
+    },
+    {
+      name: 'tomato',
+      image: '/images/tomato.png'
+    },
+    {
+      name: 'onion',
+      image: '/images/onion.png'
+    }
+  ];
 
   const countdown = document.querySelector('.timer-countdown');
 
@@ -14,6 +37,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.querySelector('.start-button');
 
   const pots = document.querySelectorAll('.pot');
+
+  const randomImages = document.querySelectorAll('.random-image');
 
   //random time for food to pop up and down
   score.textContent = scoreCounter;
@@ -25,23 +50,29 @@ window.addEventListener('DOMContentLoaded', () => {
     return popUpTime;
   }
 
-  function randomPot(pots) {
-    const index = Math.floor(Math.random() * pots.length);
-    const pot = pots[index];
-    if(pot === lastPot){
-      return randomPot(pots);
+  function ingredientPick(randomImages) {
+    const index = Math.floor(Math.random() * randomImages.length);
+    const randomImage = randomImages[index];
+    if(randomImage === lastImage){
+      return ingredientPick(randomImages);
     }
-    lastPot = pot;
-    return pot;
+    lastImage = randomImage;
+    return randomImage;
+  }
+
+  function randomIngredient (){
+    const index = Math.floor(Math.random() * ingredients.length);
+    const ingredientImage = ingredients[index].image;
+    return ingredientImage;
   }
 
 
   function peak (){
-    const x = Math.floor(Math.random() * 256);
-    const y = Math.floor(Math.random() * 256);
-    const z = Math.floor(Math.random() * 256);
-    const newColor = 'rgb(' + x + ',' + y + ',' + z + ')';
-    // check if commented out section below works properly
+    // const x = Math.floor(Math.random() * 256);
+    // const y = Math.floor(Math.random() * 256);
+    // const z = Math.floor(Math.random() * 256);
+    // const newColor = 'rgb(' + x + ',' + y + ',' + z + ')';
+    // // check if commented out section below works properly
     if(timer === 20 || scoreCounter === 10){
       max -= 500;
     }
@@ -49,17 +80,19 @@ window.addEventListener('DOMContentLoaded', () => {
       max = 1000;
     }
     const time = randomTime(min, max);
-    const pot = randomPot(pots);
-    pot.classList.add('change-color');
-    if(pot.classList.contains('change-color')){
-      pot.style.background = newColor;
-    }
+    const randomImage = ingredientPick(randomImages);
+    randomImage.src = randomIngredient();
+    randomImage.classList.add('point');
+    // pot.classList.add('change-color');
+    // if(pot.classList.contains('change-color')){
+    //   pot.style.background = newColor;
+    // }
     setTimeout(() => {
-      pot.classList.remove('change-color');
-      pot.style.background = 'green';
+      randomImage.src = '';
+      randomImage.style.background = 'green';
       if(!timeUp) peak();
     }, time);
-    return time, pot;
+    return time, randomImage;
   }
 
   function startGame() {
@@ -87,9 +120,9 @@ window.addEventListener('DOMContentLoaded', () => {
   startBtn.addEventListener('click', startGame);
 
   function hit(e) {
-    if(e.target.classList.contains('change-color')){
+    if(e.target.classList.contains('point')){
       scoreCounter++;
-      this.classList.remove('change-color');
+      this.classList.remove('point');
     }
     score.textContent = scoreCounter;
   }
