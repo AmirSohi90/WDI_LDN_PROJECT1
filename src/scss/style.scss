@@ -37,6 +37,42 @@ h2 {
   }
 }
 
+.instructions-screen{
+  margin: 0 auto;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.instructions{
+  text-align: center;
+}
+.difficulty-explanation{
+  text-align: center;
+}
+.difficulty-buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.recipe{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipe-ingredients{
+  margin-right: 20px;
+}
+.recipe-image{
+  width: 200px;
+  border-radius: 50%;
+}
+.next-level-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .main-container {
   width: 900px;
