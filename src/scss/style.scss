@@ -2,12 +2,18 @@
 
 body {
   background-color: green;
+  font-family: 'BioRhyme Expanded', serif;
 }
 
 header{
   height: 30px;
-  font-size: 15px;
+  font-size: 10px;
   background-color: grey;
+  text-align: center;
+}
+
+h2 {
+  font-size: 10px;
   text-align: center;
 }
 
@@ -101,9 +107,32 @@ header{
 }
 
 .point{
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  transition: all 0.4s;
+  // position: absolute;
+  // z-index: 0;
+}
+
+.random-image {
+  overflow: hidden;
+}
+
+.popUp {
+  position: relative;
+  animation: popUp 1s linear;
+}
+
+.popDown{
+  position: relative;
+  animation: popDown 1s linear;
+}
+
+@keyframes popUp {
+  0% { top: 44px }
+  100% { top: 0px }
+}
+
+@keyframes popDown {
+
+  0% { top: 0px }
+  100% { top: 44px }
+
 }

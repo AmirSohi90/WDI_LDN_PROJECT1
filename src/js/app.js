@@ -2,8 +2,8 @@ let timer = 30;
 let lastImage;
 let timeUp = false;
 let scoreCounter = 0;
-let min = 500;
-let max = 2000;
+let min = 1000;
+let max = 3000;
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const startBtn = document.querySelector('.start-button');
 
-  const pots = document.querySelectorAll('.pot');
+  // const pots = document.querySelectorAll('.pot');
 
   const randomImages = document.querySelectorAll('.random-image');
   console.log(randomImages);
@@ -69,11 +69,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   function peak (){
-    // const x = Math.floor(Math.random() * 256);
-    // const y = Math.floor(Math.random() * 256);
-    // const z = Math.floor(Math.random() * 256);
-    // const newColor = 'rgb(' + x + ',' + y + ',' + z + ')';
-    // // check if commented out section below works properly
     if(timer === 20 || scoreCounter === 10){
       max -= 500;
     }
@@ -83,14 +78,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const time = randomTime(min, max);
     const randomImage = ingredientPick(randomImages);
     randomImage.src = randomIngredient();
-    randomImage.innerHTML = `<img src="${randomIngredient()}">`;
-    randomImage.classList.add('point');
+    randomImage.innerHTML = `<img src="${randomIngredient()}" class="point popUp">`;
     console.log(randomImage);
-    // pot.classList.add('change-color');
-    // if(pot.classList.contains('change-color')){
-    //   pot.style.background = newColor;
-    // }
     setTimeout(() => {
+      // setTimeout(() => {
+      //   randomImage.innerHTML = `<img src="${randomIngredient()}" class="point popDown">`;
+      // }, 1000);
       randomImage.innerHTML = '';
       randomImage.classList.remove('point');
       randomImage.style.background = 'green';
@@ -126,12 +119,12 @@ window.addEventListener('DOMContentLoaded', () => {
   function hit(e) {
     if(e.target.classList.contains('point')){
       scoreCounter++;
-      e.target.innerHTHML = '';
+      e.target.innerHTML = `<img src="${randomIngredient()}" class="point popDown">`;
       e.target.classList.remove('point');
     }
     score.textContent = scoreCounter;
   }
 
-  pots.forEach(pot => pot.addEventListener('click', hit));
+  randomImages.forEach(pick => pick.addEventListener('click', hit));
 
 });
