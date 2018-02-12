@@ -5,74 +5,74 @@ let scoreCounter = 0;
 let min = 1000;
 let max = 3000;
 
+const ingredients = [
+  {
+    name: 'carrot',
+    image: '/images/carrot.png'
+  },
+  {
+    name: 'beef',
+    image: '/images/beef.png'
+  },
+  {
+    name: 'garlic',
+    image: '/images/garlic.png'
+  },
+  {
+    name: 'tomato',
+    image: '/images/tomato.png'
+  },
+  {
+    name: 'onion',
+    image: '/images/onion.png'
+  },
+  {
+    name: 'buns',
+    image: '/images/buns.png'
+  },
+  {
+    name: 'cheese',
+    image: '/images/cheese.png'
+  },
+  {
+    name: 'chicken',
+    image: '/images/chicken.png'
+  },
+  {
+    name: 'egg',
+    image: '/images/egg.png'
+  },
+  {
+    name: 'gherkin',
+    image: '/images/gherkin.png'
+  },
+  {
+    name: 'lemon',
+    image: '/images/lettuce.png'
+  },
+  {
+    name: 'lettuce',
+    image: '/images/lettuce.png'
+  },
+  {
+    name: 'peas',
+    image: '/images/peas.png'
+  },
+  {
+    name: 'pepper',
+    image: '/images/pepper.png'
+  },
+  {
+    name: 'prawn',
+    image: '/images/prawn.png'
+  },
+  {
+    name: 'soysauce',
+    image: '/images/soysauce.png'
+  }
+];
 window.addEventListener('DOMContentLoaded', () => {
 
-  const ingredients = [
-    {
-      name: 'carrot',
-      image: '/images/carrot.png'
-    },
-    {
-      name: 'beef',
-      image: '/images/beef.png'
-    },
-    {
-      name: 'garlic',
-      image: '/images/garlic.png'
-    },
-    {
-      name: 'tomato',
-      image: '/images/tomato.png'
-    },
-    {
-      name: 'onion',
-      image: '/images/onion.png'
-    },
-    {
-      name: 'buns',
-      image: '/images/buns.png'
-    },
-    {
-      name: 'cheese',
-      image: '/images/cheese.png'
-    },
-    {
-      name: 'chicken',
-      image: '/images/chicken.png'
-    },
-    {
-      name: 'egg',
-      image: '/images/egg.png'
-    },
-    {
-      name: 'gherkin',
-      image: '/images/gherkin.png'
-    },
-    {
-      name: 'lemon',
-      image: '/images/lettuce.png'
-    },
-    {
-      name: 'lettuce',
-      image: '/images/lettuce.png'
-    },
-    {
-      name: 'peas',
-      image: '/images/peas.png'
-    },
-    {
-      name: 'pepper',
-      image: '/images/pepper.png'
-    },
-    {
-      name: 'prawn',
-      image: '/images/prawn.png'
-    },
-    {
-      name: 'soysauce',
-      image: '/images/soysauce.png'
-    }
-  ];
 
   const countdown = document.querySelector('.timer-countdown');
 
@@ -85,7 +85,20 @@ window.addEventListener('DOMContentLoaded', () => {
   const randomImages = document.querySelectorAll('.random-image');
   console.log(randomImages);
 
+  //next level buttons
+  const nextLevel = document.querySelectorAll('.next-level-button');
+
+  //difficulty buttons
+  const difficultyButtons = document.querySelectorAll('.difficulty-buttons');
+
+  //different recipe IDs
+  const burger = document.querySelector('#burger');
+  const spaghetti = document.querySelector('#spaghetti');
+  const stirFry = document.querySelector('#stir-fry');
+  const paella = document.querySelector('#paella');
+  const roast = document.querySelector('#roast');
   //random time for food to pop up and down
+
   score.textContent = scoreCounter;
   countdown.textContent = timer;
 
@@ -163,7 +176,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function hit(e) {
     if(e.target.classList.contains('point')){
       scoreCounter++;
-      e.target.innerHTML = `<img src="${randomIngredient()}" class="point popDown">`;
+      e.target.innerHTML = '';
     }
     score.textContent = scoreCounter;
   }
