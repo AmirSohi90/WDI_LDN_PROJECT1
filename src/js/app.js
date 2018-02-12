@@ -39,6 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const pots = document.querySelectorAll('.pot');
 
   const randomImages = document.querySelectorAll('.random-image');
+  console.log(randomImages);
 
   //random time for food to pop up and down
   score.textContent = scoreCounter;
@@ -82,13 +83,16 @@ window.addEventListener('DOMContentLoaded', () => {
     const time = randomTime(min, max);
     const randomImage = ingredientPick(randomImages);
     randomImage.src = randomIngredient();
+    randomImage.innerHTML = `<img src="${randomIngredient()}">`;
     randomImage.classList.add('point');
+    console.log(randomImage);
     // pot.classList.add('change-color');
     // if(pot.classList.contains('change-color')){
     //   pot.style.background = newColor;
     // }
     setTimeout(() => {
-      randomImage.src = '';
+      randomImage.innerHTML = '';
+      randomImage.classList.remove('point');
       randomImage.style.background = 'green';
       if(!timeUp) peak();
     }, time);
@@ -122,7 +126,8 @@ window.addEventListener('DOMContentLoaded', () => {
   function hit(e) {
     if(e.target.classList.contains('point')){
       scoreCounter++;
-      this.classList.remove('point');
+      e.target.innerHTHML = '';
+      e.target.classList.remove('point');
     }
     score.textContent = scoreCounter;
   }
