@@ -41,13 +41,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const y = Math.floor(Math.random() * 256);
     const z = Math.floor(Math.random() * 256);
     const newColor = 'rgb(' + x + ',' + y + ',' + z + ')';
-    //check if commented out section below works properly
-    // if(scoreCounter === 10 || scoreCounter === 20){
-    //   max -= 500;
-    // }
-    // if(max < 1000){
-    //   max = 1000;
-    // }
+    // check if commented out section below works properly
+    if(timer === 20 || scoreCounter === 10){
+      max -= 500;
+    }
+    if(max < 1000){
+      max = 1000;
+    }
     const time = randomTime(min, max);
     const pot = randomPot(pots);
     pot.classList.add('change-color');
@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     setTimeout(() => {
       pot.classList.remove('change-color');
-      pot.style.background = 'pink';
+      pot.style.background = 'green';
       if(!timeUp) peak();
     }, time);
     return time, pot;
@@ -65,6 +65,8 @@ window.addEventListener('DOMContentLoaded', () => {
   function startGame() {
     startBtn.disabled = true;
     timer = 30;
+    max = 2000;
+    min = 500;
     countdown.textContent = timer;
     scoreCounter = 0;
     score.textContent = 0;
