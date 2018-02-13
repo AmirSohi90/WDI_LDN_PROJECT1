@@ -42,6 +42,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           </div>
         </div>
       </div>
+      <div id="character-selection">
+          <div class="selection-title">
+            <h1>Choose your character!</h1>
+          </div>
+        <div class="chef-man">
+          <button type="button" name="button" id="chef-man-button">Chef-Man!</button>
+        </div>
+        <div class="ramen-girl">
+          <button type="button" name="button" id="ramen-girl-button">Ramen-Girl!</button>
+        </div>
+      </div>
         <div class="difficulties">
           <button type="button" name="button" class="difficulty-buttons easy">Easy</button>
           <button type="button" name="button" class="difficulty-buttons medium">Medium</button>
@@ -206,51 +217,63 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           </div>
         </div>
       </div>
+      <div class="password-shown hide">
+        <div class="congrats-and-password">
+          <p>Congratulations on beating the game! But you aren't done yet. Take a crack at the final level!</p>
+          <p>Password: iddqd</p>
+        </div>
+        <button type="button" name="button" id="home-screen">Home Screen</button>
+      </div>
+      <div class="thanks hide">
+        <div class="thanks-text">
+          <p>Thanks for playing! You're a true chef!</p>
+        </div>
+      </div>
       <div class="main-container hide">
         <div class="ingredients">
           <h2>Ingredients</h2>
           <ul id="spaghetti-list" class="hide">
-            <li>beef</li>
-            <li>onion</li>
-            <li>garlic</li>
-            <li>carrot</li>
-            <li>tomato</li>
-            <li>cheese</li>
+            <li class="level-ingredients">beef</li>
+            <li class="level-ingredients">onion</li>
+            <li class="level-ingredients">garlic</li>
+            <li class="level-ingredients">carrot</li>
+            <li class="level-ingredients">tomato</li>
+            <li class="level-ingredients">cheese</li>
           </ul>
           <p id="fifty-points" class="hide">Need 50 Points to Continue</p>
           <ul id="stir-fry-list" class="hide">
-            <li>garlic</li>
-            <li>chicken</li>
-            <li>pepper</li>
-            <li>soy sauce</li>
-            <li>peas</li>
+            <li class="level-ingredients">garlic</li>
+            <li class="level-ingredients">chicken</li>
+            <li class="level-ingredients">pepper</li>
+            <li class="level-ingredients">soy sauce</li>
+            <li class="level-ingredients">peas</li>
           </ul>
           <p id="hundred-points" class="hide">Need 100 Points to Continue</p>
           <ul id="burger-list" class="hide">
-            <li>beef</li>
-            <li>egg</li>
-            <li>lettuce</li>
-            <li>onion</li>
-            <li>gherkin</li>
-            <li>cheese</li>
-            <li>buns</li>
+            <li class="level-ingredients">beef</li>
+            <li class="level-ingredients">egg</li>
+            <li class="level-ingredients">lettuce</li>
+            <li class="level-ingredients">onion</li>
+            <li class="level-ingredients">gherkin</li>
+            <li class="level-ingredients">cheese</li>
+            <li class="level-ingredients">buns</li>
           </ul>
           <p id="hundred-fifty-points" class="hide">Need 150 Points to Continue</p>
           <ul id="paella-list" class="hide">
-            <li>onion</li>
-            <li>tomato</li>
-            <li>chicken</li>
-            <li>prawn</li>
-            <li>lemon</li>
+            <li class="level-ingredients">onion</li>
+            <li class="level-ingredients">tomato</li>
+            <li class="level-ingredients">chicken</li>
+            <li class="level-ingredients">prawn</li>
+            <li class="level-ingredients">lemon</li>
           </ul>
           <p id="two-hundred-points" class="hide">Need 200 Points</p>
           <ul id="roast-list" class="hide">
-            <li>chicken</li>
-            <li>onion</li>
-            <li>carrot</li>
-            <li>garlic</li>
-            <li>lemon</li>
-            <li>potato</li>
+            <li class="level-ingredients">chicken</li>
+            <li class="level-ingredients">onion</li>
+            <li class="level-ingredients">carrot</li>
+            <li class="level-ingredients">garlic</li>
+            <li class="level-ingredients">lemon</li>
+            <li class="level-ingredients">potato</li>
           </ul>
           <p id="three-hundred-points" class="hide">Need 300 Points to Win</p>
         </div>
@@ -309,7 +332,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           <img src="/images/pot10.png" alt="" class="front-pot">
         </div>
       </div>
-      <div class="chef">
+      <div id="chef">
 
       </div>
       <div class=button>
