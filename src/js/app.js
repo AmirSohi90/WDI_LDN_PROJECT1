@@ -135,6 +135,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const chefBox = document.querySelector('#chef');
 
+  const finalLevelDone = document.querySelector('.password-shown');
+
+  const finalLevelDoneButton = document.querySelector('.back-to-home-screen');
+
   function disabledButtons(){
     ramenGirl.disabled = false;
     chefMan.disabled = false;
@@ -290,6 +294,8 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if(level === 4 && hitIngredients.includes('onion') && hitIngredients.includes('tomato') && hitIngredients.includes('chicken') && hitIngredients.includes('prawn') && hitIngredients.includes('lemon') && score === 200) {
           mainContainer.classList.add('hide');
           paella.classList.remove('hide');
+          finalLevelDone.remove('hide');
+
         } else {
           mainContainer.classList.add('hide');
           tryAgain.classList.remove('hide');
@@ -300,6 +306,12 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }, 1000);
   }
+
+  finalLevelDoneButton.addEventListener('click', () => {
+    finalLevelDone.classList.add('hide');
+    instructionsScreen.classList.remove('hide');
+    resetGame();
+  });
 
 
   startBtn.addEventListener('click', startGame);
@@ -391,8 +403,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  tryAgainButton.addEventListener('click', () =>{
+  function resetGame() {
     timer;
     lastImage;
     timeUp = false;
@@ -408,7 +419,9 @@ window.addEventListener('DOMContentLoaded', () => {
     difficultiesDiv.classList.remove('hide');
     characterSelect.classList.remove('hide');
     disabledButtons();
-  });
+  }
+
+  tryAgainButton.addEventListener('click', resetGame);
 
   randomImages.forEach(pick => pick.addEventListener('click', hit));
 
