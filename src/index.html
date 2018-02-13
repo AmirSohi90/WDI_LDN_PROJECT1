@@ -16,7 +16,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <main>
       <div class="time-and-score">
         <div class="time">
-          <span class="timer-countdown"></span>
+          <span class="timer-countdown">0</span>
         </div>
         <div class="level-description">
           <span id="level-description-span"></span>
@@ -46,6 +46,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           <button type="button" name="button" class="difficulty-buttons easy">Easy</button>
           <button type="button" name="button" class="difficulty-buttons medium">Medium</button>
           <button type="button" name="button" class="difficulty-buttons hard">Hard</button>
+        </div>
+        <div class="try-again hide">
+          <div class="try-again-text">
+            <p>Sorry. You failed! Why not try again?</p>
+          </div>
+          <div class="try-again-button">
+            <button type="button" name="button" id="try-again">Try Again</button>
+          </div>
         </div>
       <div id="burger" class="recipes hide">
         <div class="recipe">
@@ -206,7 +214,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
             <li>onion</li>
             <li>garlic</li>
             <li>carrot</li>
-            <li>tomatoes</li>
+            <li>tomato</li>
+            <li>cheese</li>
           </ul>
           <ul id="stir-fry-list" class="hide">
             <li>garlic</li>
