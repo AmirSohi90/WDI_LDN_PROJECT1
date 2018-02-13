@@ -6,7 +6,7 @@ let min;
 let max;
 let difficulty = 0;
 let level = 0;
-let hitIngredients = ['beef', 'carrot', 'cheese', 'garlic', 'onion', 'tomato'];
+let hitIngredients = [];
 const ingredients = [
   {
     name: 'carrot',
@@ -183,9 +183,6 @@ window.addEventListener('DOMContentLoaded', () => {
     return ingredients[index];
   }
 
-  // const randomIng = randomIngredient();
-  // console.log(randomIng);
-
   function peak (){
     if(timer === 10){
       max -= 750;
@@ -274,24 +271,31 @@ window.addEventListener('DOMContentLoaded', () => {
     for(let i = 0; i < nextLevel.length; i++){
     nextLevel[i].addEventListener('click', () => {
       if(level === 1){
+        hitIngredients= []
         level ++;
         spaghettiList.classList.add('hide');
         stirFryList.classList.remove('hide');
         spaghetti.classList.add('hide');
         mainContainer.classList.remove('hide');
+        levelDescription.textContent = 'Level 2: Stir Fry';
       } else if(level === 2){
+        hitIngredients= []
         level ++;
         stirFry.classList.add('hide');
         burgerList.classList.remove('hide');
         stirFry.classList.add('hide');
         mainContainer.classList.remove('hide');
+        levelDescription.textContent = 'Level 3: Burger';
       } else if(level === 3){
+        hitIngredients= []
         level ++;
         burgerList.classList.add('hide');
         paella.classList.remove('hide');
         burger.classList.add('hide');
         mainContainer.classList.remove('hide');
+        levelDescription.textContent = 'Level 4: Paella';
       } else if(level === 4){
+        hitIngredients= []
         level ++;
         paella.classList.add('hide');
         mainContainer.classList.remove('hide');
@@ -304,6 +308,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let lastImage;
     let timeUp = false;
     let scoreCounter = 0;
+    score.textContent = scoreCounter;
     let min;
     let max;
     let difficulty = 0;
@@ -313,6 +318,16 @@ window.addEventListener('DOMContentLoaded', () => {
     instructionsScreen.classList.remove('hide');
     difficultiesDiv.classList.remove('hide');
   });
+  // 
+  // if(level === 2){
+  //   levelDescription.textContent = 'Level 2: Stir Fry';
+  // } else if(level === 3){
+  //   levelDescription.textContent = 'Level 3: Burger';
+  // } else if(level === 4){
+  //   levelDescription.textContent = 'Level 4: Paella';
+  // } else if(level === 'secret'){
+  //   levelDescription.textContent = 'Secret Level: Roast Chicken';
+  // }
 
   randomImages.forEach(pick => pick.addEventListener('click', hit));
 
