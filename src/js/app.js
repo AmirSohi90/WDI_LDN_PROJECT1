@@ -199,6 +199,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
+    console.log(level);
     startBtn.disabled = true;
     if(difficulty === 1){
       timer = 60;
@@ -253,8 +254,40 @@ window.addEventListener('DOMContentLoaded', () => {
   startBtn.addEventListener('click', startGame);
 
   function hit(e) {
+    if(level === 1){
+      if(e.target.id === 'beef' || e.target.id === 'onion' || e.target.id === 'garlic' || e.target.id === 'carrot' || e.target.id === 'tomato' || e.target.id === 'cheese'){
+        scoreCounter += 5;
+      } else {
+        scoreCounter -= 2;
+      }
+    }
+    if(level === 2){
+      if(e.target.id === 'garlic' || e.target.id === 'chicken' || e.target.id === 'pepper' || e.target.id === 'soy sauce' || e.target.id === 'peas'){
+        scoreCounter += 5;
+      } else {
+        scoreCounter -= 2;
+      }
+    }
+    if(level === 3){
+      if(e.target.id === 'beef' || e.target.id === 'egg' || e.target.id === 'lettuce' || e.target.id === 'onion' || e.target.id === 'gherkin' || e.target.id === 'cheese' || e.target.id === 'buns'){
+        scoreCounter += 5;
+      } else {
+        scoreCounter -= 2;
+      }
+    }
+    if(level === 4){
+      if(e.target.id === 'onion' || e.target.id === 'tomato' || e.target.id === 'chicken' || e.target.id === 'prawn'){
+        scoreCounter += 5;
+      } else {
+        scoreCounter -=2 ;
+      }
+    }
+
+    if(scoreCounter < 0){
+      scoreCounter = 0;
+    }
+    
     if(e.target.classList.contains('point')){
-      scoreCounter++;
       console.log(e.target.id);
       e.target.innerHTML = '';
       hitIngredients.push(e.target.id);
