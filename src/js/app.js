@@ -1,9 +1,11 @@
-let timer = 30;
+let timer;
 let lastImage;
 let timeUp = false;
 let scoreCounter = 0;
-let min = 1000;
-let max = 3000;
+let min;
+let max;
+let difficulty = 0;
+let level = 0;
 
 const ingredients = [
   {
@@ -67,7 +69,7 @@ const ingredients = [
     image: '/images/prawn.png'
   },
   {
-    name: 'soysauce',
+    name: 'soy sauce',
     image: '/images/soysauce.png'
   }
 ];
@@ -88,8 +90,48 @@ window.addEventListener('DOMContentLoaded', () => {
   //next level buttons
   const nextLevel = document.querySelectorAll('.next-level-button');
 
+  const mainContainer = document.querySelector('.main-container');
+
   //difficulty buttons
   const difficultyButtons = document.querySelectorAll('.difficulty-buttons');
+  console.log(difficultyButtons);
+
+  const difficultiesDiv = document.querySelector('.difficulties');
+
+  const instructionsScreen = document.querySelector('.instructions-screen');
+
+  for (let i = 0; i < difficultyButtons.length; i++){
+    difficultyButtons[i].addEventListener('click', (e) => {
+      if(e.target.classList.contains('easy')){
+        level = 1;
+        difficulty = 1;
+        timer = 60;
+        max = 4000;
+        min = 2000;
+        instructionsScreen.classList.add('hide');
+        difficultiesDiv.classList.add('hide');
+        mainContainer.classList.remove('hide');
+      } else if(e.target.classList.contains('medium')){
+        level = 1;
+        difficulty = 2;
+        timer = 50;
+        max = 3500;
+        min = 1500;
+        instructionsScreen.classList.add('hide');
+        difficultiesDiv.classList.add('hide');
+        mainContainer.classList.remove('hide');
+      } else if(e.target.classList.contains('hard')) {
+        level = 1;
+        difficulty = 3;
+        timer = 45;
+        max = 3000;
+        min = 1000;
+        instructionsScreen.classList.add('hide');
+        difficultiesDiv.classList.add('hide');
+        mainContainer.classList.remove('hide');
+      }
+    });
+  }
 
   //different recipe IDs
   const burger = document.querySelector('#burger');
@@ -118,24 +160,25 @@ window.addEventListener('DOMContentLoaded', () => {
     return randomImage;
   }
 
-  function randomIngredient (){
+  function randomIngredient() {
     const index = Math.floor(Math.random() * ingredients.length);
-    const ingredientImage = ingredients[index].image;
-    return ingredientImage;
+    return ingredients[index];
   }
 
+  // const randomIng = randomIngredient();
+  // console.log(randomIng);
 
   function peak (){
-    if(timer === 20 || scoreCounter === 10){
-      max -= 500;
+    if(timer === 10){
+      max -= 750;
     }
     if(max < 1000){
       max = 1000;
     }
     const time = randomTime(min, max);
     const randomImage = ingredientPick(randomImages);
-    randomImage.src = randomIngredient();
-    randomImage.innerHTML = `<img src="${randomIngredient()}" class="point popUp">`;
+    const randomIng = randomIngredient();
+    randomImage.innerHTML = `<img id="${randomIng.name}" src="${randomIng.image}" class="point popUp">`;
     console.log(randomImage);
     setTimeout(() => {
       // setTimeout(() => {
@@ -151,9 +194,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function startGame() {
     startBtn.disabled = true;
-    timer = 30;
-    max = 2000;
-    min = 500;
+    if(difficulty === 1){
+      timer = 60;
+      max = 4000;
+      min = 2000;
+    } else if (difficulty === 2){
+      timer = 50;
+      max = 3500;
+      min = 1500;
+    } else if (difficulty === 3){
+      timer = 45;
+      max = 2500;
+      min = 750;
+    }
     countdown.textContent = timer;
     scoreCounter = 0;
     score.textContent = 0;
@@ -176,6 +229,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function hit(e) {
     if(e.target.classList.contains('point')){
       scoreCounter++;
+      console.log(e.target);
       e.target.innerHTML = '';
     }
     score.textContent = scoreCounter;

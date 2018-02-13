@@ -22,7 +22,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           <span class="score-board"></span>
         </div>
       </div>
-      <div class="instructions-screen hide">
+      <div class="instructions-screen">
         <div class="instructions">
           <h3>Welcome to Click 'n' Pick a Pot!</h3>
           <p>The aim of the game is to collect the correct ingredients and get 10 points in the set time for the tasty reward. Watch out though if you get the wrong ingredient you'll lose a point!</p>
@@ -39,10 +39,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           </div>
         </div>
       </div>
-        <div class="difficulties hide">
-          <button type="button" name="button" class="difficulty-buttons">Easy</button>
-          <button type="button" name="button" class="difficulty-buttons">Medium</button>
-          <button type="button" name="button" class="difficulty-buttons">Hard</button>
+        <div class="difficulties">
+          <button type="button" name="button" class="difficulty-buttons easy">Easy</button>
+          <button type="button" name="button" class="difficulty-buttons medium">Medium</button>
+          <button type="button" name="button" class="difficulty-buttons hard">Hard</button>
         </div>
       <div id="burger" class="recipes hide">
         <div class="recipe">
@@ -196,11 +196,46 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         </div>
       </div>
 
-      <div class="main-container">
+      <div class="main-container hide">
         <div class="ingredients">
           <h2>Ingredients</h2>
-          <ul>
-
+          <ul id="spaghetti" class="hide">
+            <li>beef</li>
+            <li>onion</li>
+            <li>garlic</li>
+            <li>carrot</li>
+            <li>tomatoes</li>
+          </ul>
+          <ul id="stir-fry" class="hide">
+            <li>garlic</li>
+            <li>chicken</li>
+            <li>pepper</li>
+            <li>soy sauce</li>
+            <li>peas</li>
+          </ul>
+          <ul id="burger" class="hide">
+            <li>beef</li>
+            <li>egg</li>
+            <li>lettuce</li>
+            <li>onion</li>
+            <li>gherkin</li>
+            <li>cheese</li>
+            <li>buns</li>
+          </ul>
+          <ul id="paella" class="hide">
+            <li>onion</li>
+            <li>tomato</li>
+            <li>chicken</li>
+            <li>prawn</li>
+            <li>lemon</li>
+          </ul>
+          <ul id="roast" class="hide">
+            <li>chicken</li>
+            <li>onion</li>
+            <li>carrot</li>
+            <li>garlic</li>
+            <li>lemon</li>
+            <li>potato</li>
           </ul>
         </div>
         <div class="pots">
