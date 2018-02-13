@@ -71,6 +71,10 @@ const ingredients = [
   {
     name: 'soy sauce',
     image: '/images/soysauce.png'
+  },
+  {
+    name: 'clock',
+    image: '/images/clock.png'
   }
 ];
 window.addEventListener('DOMContentLoaded', () => {
@@ -257,6 +261,8 @@ window.addEventListener('DOMContentLoaded', () => {
     if(level === 1){
       if(e.target.id === 'beef' || e.target.id === 'onion' || e.target.id === 'garlic' || e.target.id === 'carrot' || e.target.id === 'tomato' || e.target.id === 'cheese'){
         scoreCounter += 5;
+      } else if (e.target.id === 'clock') {
+        timer += 5;
       } else {
         scoreCounter -= 2;
       }
@@ -264,6 +270,8 @@ window.addEventListener('DOMContentLoaded', () => {
     if(level === 2){
       if(e.target.id === 'garlic' || e.target.id === 'chicken' || e.target.id === 'pepper' || e.target.id === 'soy sauce' || e.target.id === 'peas'){
         scoreCounter += 5;
+      } else if (e.target.id === 'clock') {
+        timer += 5;
       } else {
         scoreCounter -= 2;
       }
@@ -271,6 +279,8 @@ window.addEventListener('DOMContentLoaded', () => {
     if(level === 3){
       if(e.target.id === 'beef' || e.target.id === 'egg' || e.target.id === 'lettuce' || e.target.id === 'onion' || e.target.id === 'gherkin' || e.target.id === 'cheese' || e.target.id === 'buns'){
         scoreCounter += 5;
+      } else if (e.target.id === 'clock') {
+        timer += 5;
       } else {
         scoreCounter -= 2;
       }
@@ -278,15 +288,17 @@ window.addEventListener('DOMContentLoaded', () => {
     if(level === 4){
       if(e.target.id === 'onion' || e.target.id === 'tomato' || e.target.id === 'chicken' || e.target.id === 'prawn'){
         scoreCounter += 5;
+      } else if (e.target.id === 'clock') {
+        timer += 5;
       } else {
-        scoreCounter -=2 ;
+        scoreCounter -= 2;
       }
     }
 
     if(scoreCounter < 0){
       scoreCounter = 0;
     }
-    
+
     if(e.target.classList.contains('point')){
       console.log(e.target.id);
       e.target.innerHTML = '';
