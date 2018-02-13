@@ -2,8 +2,8 @@ let timer;
 let lastImage;
 let timeUp = false;
 let scoreCounter = 0;
-let min;
-let max;
+let min = 0;
+let max = 0;
 let difficulty = 0;
 let level = 0;
 let hitIngredients = [];
@@ -118,8 +118,6 @@ window.addEventListener('DOMContentLoaded', () => {
         level = 1;
         difficulty = 1;
         timer = 60;
-        max = 4000;
-        min = 2000;
         instructionsScreen.classList.add('hide');
         difficultiesDiv.classList.add('hide');
         mainContainer.classList.remove('hide');
@@ -129,8 +127,6 @@ window.addEventListener('DOMContentLoaded', () => {
         level = 1;
         difficulty = 2;
         timer = 50;
-        max = 3500;
-        min = 1500;
         instructionsScreen.classList.add('hide');
         difficultiesDiv.classList.add('hide');
         mainContainer.classList.remove('hide');
@@ -140,8 +136,6 @@ window.addEventListener('DOMContentLoaded', () => {
         level = 1;
         difficulty = 3;
         timer = 45;
-        max = 3000;
-        min = 1000;
         instructionsScreen.classList.add('hide');
         difficultiesDiv.classList.add('hide');
         mainContainer.classList.remove('hide');
@@ -208,16 +202,16 @@ window.addEventListener('DOMContentLoaded', () => {
     startBtn.disabled = true;
     if(difficulty === 1){
       timer = 60;
-      max = 4000;
-      min = 2000;
+      max = 2500;
+      min = 1500;
     } else if (difficulty === 2){
       timer = 50;
-      max = 3500;
-      min = 1500;
+      max = 2000;
+      min = 1000;
     } else if (difficulty === 3){
       timer = 45;
-      max = 2500;
-      min = 750;
+      max = 1500;
+      min = 500;
     }
     countdown.textContent = timer;
     if(level === 1) {
@@ -318,16 +312,6 @@ window.addEventListener('DOMContentLoaded', () => {
     instructionsScreen.classList.remove('hide');
     difficultiesDiv.classList.remove('hide');
   });
-  // 
-  // if(level === 2){
-  //   levelDescription.textContent = 'Level 2: Stir Fry';
-  // } else if(level === 3){
-  //   levelDescription.textContent = 'Level 3: Burger';
-  // } else if(level === 4){
-  //   levelDescription.textContent = 'Level 4: Paella';
-  // } else if(level === 'secret'){
-  //   levelDescription.textContent = 'Secret Level: Roast Chicken';
-  // }
 
   randomImages.forEach(pick => pick.addEventListener('click', hit));
 
