@@ -6,7 +6,7 @@ let min;
 let max;
 let difficulty = 0;
 let level = 0;
-
+let hitIngredients = []
 const ingredients = [
   {
     name: 'carrot',
@@ -80,12 +80,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const score = document.querySelector('.score-board');
 
+  const levelDescription = document.querySelector('#level-description-span');
+
   const startBtn = document.querySelector('.start-button');
 
   // const pots = document.querySelectorAll('.pot');
 
   const randomImages = document.querySelectorAll('.random-image');
   console.log(randomImages);
+
+  //ingredients for each level
+  const spaghettiList = document.querySelector('#spaghetti-list');
+  const stirFryList = document.querySelector('#stir-fry-list');
+  const burgerList = document.querySelector('#burger-list');
+  const paellaList = document.querySelector('#paella-list');
+  const roastList = document.querySelector('#roast-list');
 
   //next level buttons
   const nextLevel = document.querySelectorAll('.next-level-button');
@@ -111,6 +120,8 @@ window.addEventListener('DOMContentLoaded', () => {
         instructionsScreen.classList.add('hide');
         difficultiesDiv.classList.add('hide');
         mainContainer.classList.remove('hide');
+        levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        spaghettiList.classList.remove('hide');
       } else if(e.target.classList.contains('medium')){
         level = 1;
         difficulty = 2;
@@ -120,6 +131,7 @@ window.addEventListener('DOMContentLoaded', () => {
         instructionsScreen.classList.add('hide');
         difficultiesDiv.classList.add('hide');
         mainContainer.classList.remove('hide');
+        spaghettiList.classList.remove('hide');
       } else if(e.target.classList.contains('hard')) {
         level = 1;
         difficulty = 3;
@@ -129,6 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
         instructionsScreen.classList.add('hide');
         difficultiesDiv.classList.add('hide');
         mainContainer.classList.remove('hide');
+        spaghettiList.classList.remove('hide');
       }
     });
   }
@@ -181,9 +194,6 @@ window.addEventListener('DOMContentLoaded', () => {
     randomImage.innerHTML = `<img id="${randomIng.name}" src="${randomIng.image}" class="point popUp">`;
     console.log(randomImage);
     setTimeout(() => {
-      // setTimeout(() => {
-      //   randomImage.innerHTML = `<img src="${randomIngredient()}" class="point popDown">`;
-      // }, 1000);
       randomImage.innerHTML = '';
       randomImage.classList.remove('point');
       randomImage.style.background = 'green';
@@ -229,8 +239,10 @@ window.addEventListener('DOMContentLoaded', () => {
   function hit(e) {
     if(e.target.classList.contains('point')){
       scoreCounter++;
-      console.log(e.target);
+      console.log(e.target.id);
       e.target.innerHTML = '';
+      hitIngredients.push(e.target.id);
+      console.log(hitIngredients);
     }
     score.textContent = scoreCounter;
   }

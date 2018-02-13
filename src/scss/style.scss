@@ -172,6 +172,10 @@ h2 {
   display: none;
 }
 
+.line-through{
+  text-decoration: line-through;
+}
+
 @keyframes popUp {
   0% { top: 44px }
   100% { top: 0px }
