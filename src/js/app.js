@@ -1,4 +1,4 @@
-let timer;
+let timer = 0;
 let lastImage;
 let timeUp = false;
 let scoreCounter = 0;
@@ -7,7 +7,6 @@ let max = 0;
 let difficulty = 0;
 let level = 0;
 let hitIngredients = [];
-let characterChosen = false;
 const ingredients = [
   {
     name: 'carrot',
@@ -137,63 +136,109 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const finalLevelDoneButton = document.querySelector('.back-to-home-screen');
 
-  function disabledButtons(){
-    ramenGirl.disabled = false;
-    chefMan.disabled = false;
-    for(let i = 0; i < difficultyButtons.length; i++){
-      difficultyButtons[i].disabled = true;
-      ramenGirl.addEventListener('click', () => {
-        // chefBox.classList.add('ramen-girl-gif');
-        ramenGirl.disabled = true;
-        chefMan.disabled = true;
-        difficultyButtons[i].disabled = false;
-      });
-      chefMan.addEventListener('click', () => {
-        // chefBox.classList.add('chef-man-gif');
-        chefMan.disabled = true;
-        ramenGirl.disabled = true;
-        difficultyButtons[i].disabled = false;
-      });
-    }
-  }
+  const passwordButton = document.querySelector('.password-input-button');
+  console.log(passwordButton);
 
-  disabledButtons();
+  // function disabledButtons(){
+  //   ramenGirl.disabled = false;
+  //   chefMan.disabled = false;
+  //   for(let i = 0; i < difficultyButtons.length; i++){
+  //     difficultyButtons[i].disabled = true;
+  //     ramenGirl.addEventListener('click', () => {
+  //       // chefBox.classList.add('ramen-girl-gif');
+  //       ramenGirl.disabled = true;
+  //       chefMan.disabled = true;
+  //       difficultyButtons[i].disabled = false;
+  //     });
+  //     chefMan.addEventListener('click', () => {
+  //       // chefBox.classList.add('chef-man-gif');
+  //       chefMan.disabled = true;
+  //       ramenGirl.disabled = true;
+  //       difficultyButtons[i].disabled = false;
+  //     });
+  //   }
+  // }
+
+  // disabledButtons();
+
+  passwordButton.addEventListener('click', () => {
+  let password = window.prompt('Please Enter Password');
+    if(password === 'iddqd'){
+      level = 10;
+    }
+  });
 
   for (let i = 0; i < difficultyButtons.length; i++){
     difficultyButtons[i].addEventListener('click', (e) => {
       if(e.target.classList.contains('easy')){
-        level = 1;
-        difficulty = 1;
-        timer = 60;
-        characterSelect.classList.add('hide');
-        instructionsScreen.classList.add('hide');
-        difficultiesDiv.classList.add('hide');
-        mainContainer.classList.remove('hide');
-        spaghettiList.classList.remove('hide');
-        fiftyPoints.classList.remove('hide');
-        levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        if(level === 10){
+          characterSelect.classList.add('hide');
+          instructionsScreen.classList.add('hide');
+          difficultiesDiv.classList.add('hide');
+          roastList.classList.remove('hide');
+          threeHundredPoints.classList.remove('hide');
+          mainContainer.classList.remove('hide');
+          difficulty = 1;
+          timer = 90;
+          levelDescription.textContent = 'Secret Level: Roast Chicken';
+        } else {
+          level = 1;
+          difficulty = 1;
+          timer = 60;
+          characterSelect.classList.add('hide');
+          instructionsScreen.classList.add('hide');
+          difficultiesDiv.classList.add('hide');
+          mainContainer.classList.remove('hide');
+          spaghettiList.classList.remove('hide');
+          fiftyPoints.classList.remove('hide');
+          levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        }
       } else if(e.target.classList.contains('medium')){
-        level = 1;
-        difficulty = 2;
-        timer = 50;
-        characterSelect.classList.add('hide');
-        instructionsScreen.classList.add('hide');
-        difficultiesDiv.classList.add('hide');
-        mainContainer.classList.remove('hide');
-        spaghettiList.classList.remove('hide');
-        fiftyPoints.classList.remove('hide');
-        levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        if(level === 10){
+          characterSelect.classList.add('hide');
+          instructionsScreen.classList.add('hide');
+          difficultiesDiv.classList.add('hide');
+          roastList.classList.remove('hide');
+          threeHundredPoints.classList.remove('hide');
+          mainContainer.classList.remove('hide');
+          difficulty = 1;
+          timer = 90;
+          levelDescription.textContent = 'Secret Level: Roast Chicken';
+        } else {
+          level = 1;
+          difficulty = 1;
+          timer = 60;
+          characterSelect.classList.add('hide');
+          instructionsScreen.classList.add('hide');
+          difficultiesDiv.classList.add('hide');
+          mainContainer.classList.remove('hide');
+          spaghettiList.classList.remove('hide');
+          fiftyPoints.classList.remove('hide');
+          levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        }
       } else if(e.target.classList.contains('hard')) {
-        level = 1;
-        difficulty = 3;
-        timer = 45;
-        characterSelect.classList.add('hide');
-        instructionsScreen.classList.add('hide');
-        difficultiesDiv.classList.add('hide');
-        mainContainer.classList.remove('hide');
-        spaghettiList.classList.remove('hide');
-        fiftyPoints.classList.remove('hide');
-        levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        if(level === 10){
+          characterSelect.classList.add('hide');
+          instructionsScreen.classList.add('hide');
+          difficultiesDiv.classList.add('hide');
+          roastList.classList.remove('hide');
+          threeHundredPoints.classList.remove('hide');
+          mainContainer.classList.remove('hide');
+          difficulty = 1;
+          timer = 90;
+          levelDescription.textContent = 'Secret Level: Roast Chicken';
+        } else {
+          level = 1;
+          difficulty = 1;
+          timer = 60;
+          characterSelect.classList.add('hide');
+          instructionsScreen.classList.add('hide');
+          difficultiesDiv.classList.add('hide');
+          mainContainer.classList.remove('hide');
+          spaghettiList.classList.remove('hide');
+          fiftyPoints.classList.remove('hide');
+          levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+        }
       }
     });
   }
@@ -276,12 +321,18 @@ window.addEventListener('DOMContentLoaded', () => {
       timer -= 1;
       countdown.textContent = timer;
       if(timer === 0){
+        for(let j = 0; j < levelIngredients.length; j++){
+          if (levelIngredients[j].classList.contains('line-through')){
+            levelIngredients[j].classList.remove('line-through');
+          }
+        }
         if(level === 1){
           if(hitIngredients.includes('beef') && hitIngredients.includes('onion') && hitIngredients.includes('garlic') && hitIngredients.includes('carrot') && hitIngredients.includes('tomato') && hitIngredients.includes('cheese') && scoreCounter >= 25) {
             console.log(hitIngredients);
             mainContainer.classList.add('hide');
             spaghetti.classList.remove('hide');
           } else {
+            console.log(hitIngredients);
             mainContainer.classList.add('hide');
             tryAgain.classList.remove('hide');
           }
@@ -295,10 +346,10 @@ window.addEventListener('DOMContentLoaded', () => {
             tryAgain.classList.remove('hide');
           }
         }
-          if(level === 3){
-            if(hitIngredients.includes('beef') && hitIngredients.includes('egg') && hitIngredients.includes('lettuce') && hitIngredients.includes('onion') && hitIngredients.includes('gherkin') && hitIngredients.includes('cheese') && hitIngredients.includes('buns') && scoreCounter >= 75){
-              mainContainer.classList.add('hide');
-              burger.classList.remove('hide');
+        if(level === 3){
+          if(hitIngredients.includes('beef') && hitIngredients.includes('egg') && hitIngredients.includes('lettuce') && hitIngredients.includes('onion') && hitIngredients.includes('gherkin') && hitIngredients.includes('cheese') && hitIngredients.includes('buns') && scoreCounter >= 75){
+            mainContainer.classList.add('hide');
+            burger.classList.remove('hide');
           } else {
             mainContainer.classList.add('hide');
             tryAgain.classList.remove('hide');
@@ -321,11 +372,16 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
-
-
   startBtn.addEventListener('click', startGame);
 
   function hit(e) {
+
+    for(let j = 0; j < levelIngredients.length; j++){
+      if(e.target.id === levelIngredients[j].textContent){
+        levelIngredients[j].classList.add('line-through');
+      }
+    }
+
     if(level === 1){
       if(e.target.id === 'beef' || e.target.id === 'onion' || e.target.id === 'garlic' || e.target.id === 'carrot' || e.target.id === 'tomato' || e.target.id === 'cheese'){
         scoreCounter += 5;
@@ -373,11 +429,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     score.textContent = scoreCounter;
   }
+
   function nextLevelFunction() {
     hitIngredients= [];
     level ++;
     mainContainer.classList.remove('hide');
   }
+
   for(let i = 0; i < nextLevel.length; i++){
     nextLevel[i].addEventListener('click', () => {
       if(level === 1){
@@ -410,6 +468,8 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+
 
   function tryAgainFunction() {
     timer;
