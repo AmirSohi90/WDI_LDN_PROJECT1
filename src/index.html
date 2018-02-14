@@ -27,8 +27,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
       </div>
       <div class="instructions-screen">
         <div class="instructions">
+          <div class="game-explanation">
           <h3>Welcome to Click 'n' Pick a Pot!</h3>
-          <p>The aim of the game is to collect the correct ingredients and get 10 points in the set time for the tasty reward. Watch out though if you get the wrong ingredient you'll lose a point!</p>
+          <div class="game-explanation-text">
+            <p>The aim of the game is to collect the correct ingredients and get 10 points in the set time for the tasty reward. Watch out though if you get the wrong ingredient you'll lose a point!</p>
+          </div>
+        </div>
+      </div>
           <div class="difficulty">
             <div class="difficulty-explanation easy-explanation">
               <p>Easy: 60 seconds and slow speed</p>
@@ -39,10 +44,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
             <div class="difficulty-explanation hard-explanation">
               <p>Hard: 45 seconds and high speed</p>
             </div>
+          </div>
             <div id="character-selection">
               <div class="selection-title">
                 <h1>Choose your character!</h1>
               </div>
+            </div>
+            <div class="characters-div">
               <div class="chef-man">
                 <button type="button" name="button" id="chef-man-button">Chef-Man!</button>
               </div>
@@ -51,16 +59,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
               </div>
             </div>
             <div class="difficulties">
-              <button type="button" name="button" class="difficulty-buttons easy">Easy</button>
-              <button type="button" name="button" class="difficulty-buttons medium">Medium</button>
-              <button type="button" name="button" class="difficulty-buttons hard">Hard</button>
+              <div class="difficulties-div">
+                <button type="button" name="button" class="difficulty-buttons easy">Easy</button>
+                <button type="button" name="button" class="difficulty-buttons medium">Medium</button>
+                <button type="button" name="button" class="difficulty-buttons hard">Hard</button>
+              </div>
             </div>
             <div class="password-input">
-              <button type="button" name="button" class="password-input-button">Password</button>
+              <div class="password-div">
+                <button type="button" name="button" class="password-input-button">Password</button>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
         <div class="try-again hide">
           <div class="try-again-text">
             <p>Sorry. You failed! Why not try again?</p>
@@ -237,51 +247,59 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
       </div>
       <div class="main-container hide">
         <div class="ingredients">
-          <h2>Ingredients</h2>
-          <ul id="spaghetti-list" class="hide">
-            <li class="level-ingredients">beef</li>
-            <li class="level-ingredients">onion</li>
-            <li class="level-ingredients">garlic</li>
-            <li class="level-ingredients">carrot</li>
-            <li class="level-ingredients">tomato</li>
-            <li class="level-ingredients">cheese</li>
-          </ul>
-          <p id="fifty-points" class="hide">Need 25 Points to Continue</p>
-          <ul id="stir-fry-list" class="hide">
-            <li class="level-ingredients">garlic</li>
-            <li class="level-ingredients">chicken</li>
-            <li class="level-ingredients">pepper</li>
-            <li class="level-ingredients">soy sauce</li>
-            <li class="level-ingredients">peas</li>
-          </ul>
-          <p id="hundred-points" class="hide">Need 50 Points to Continue</p>
-          <ul id="burger-list" class="hide">
-            <li class="level-ingredients">beef</li>
-            <li class="level-ingredients">egg</li>
-            <li class="level-ingredients">lettuce</li>
-            <li class="level-ingredients">onion</li>
-            <li class="level-ingredients">gherkin</li>
-            <li class="level-ingredients">cheese</li>
-            <li class="level-ingredients">buns</li>
-          </ul>
-          <p id="hundred-fifty-points" class="hide">Need 75 to Continue</p>
-          <ul id="paella-list" class="hide">
-            <li class="level-ingredients">onion</li>
-            <li class="level-ingredients">tomato</li>
-            <li class="level-ingredients">chicken</li>
-            <li class="level-ingredients">prawn</li>
-            <li class="level-ingredients">lemon</li>
-          </ul>
-          <p id="two-hundred-points" class="hide">Need 100 Points</p>
-          <ul id="roast-list" class="hide">
-            <li class="level-ingredients">chicken</li>
-            <li class="level-ingredients">onion</li>
-            <li class="level-ingredients">carrot</li>
-            <li class="level-ingredients">garlic</li>
-            <li class="level-ingredients">lemon</li>
-            <li class="level-ingredients">potato</li>
-          </ul>
-          <p id="three-hundred-points" class="hide">Need 200 Points to Win</p>
+          <div class="ingredients-list-flex">
+            <div class="ingredients-required">
+              <h2>Ingredients</h2>
+              <ul id="spaghetti-list" class="hide">
+                <li class="level-ingredients">beef</li>
+                <li class="level-ingredients">onion</li>
+                <li class="level-ingredients">garlic</li>
+                <li class="level-ingredients">carrot</li>
+                <li class="level-ingredients">tomato</li>
+                <li class="level-ingredients">cheese</li>
+              </ul>
+              <ul id="stir-fry-list" class="hide">
+                <li class="level-ingredients">garlic</li>
+                <li class="level-ingredients">chicken</li>
+                <li class="level-ingredients">pepper</li>
+                <li class="level-ingredients">soy sauce</li>
+                <li class="level-ingredients">peas</li>
+              </ul>
+              <ul id="burger-list" class="hide">
+                <li class="level-ingredients">beef</li>
+                <li class="level-ingredients">egg</li>
+                <li class="level-ingredients">lettuce</li>
+                <li class="level-ingredients">onion</li>
+                <li class="level-ingredients">gherkin</li>
+                <li class="level-ingredients">cheese</li>
+                <li class="level-ingredients">buns</li>
+              </ul>
+              <ul id="paella-list" class="hide">
+                <li class="level-ingredients">onion</li>
+                <li class="level-ingredients">tomato</li>
+                <li class="level-ingredients">chicken</li>
+                <li class="level-ingredients">prawn</li>
+                <li class="level-ingredients">lemon</li>
+              </ul>
+              <ul id="roast-list" class="hide">
+                <li class="level-ingredients">chicken</li>
+                <li class="level-ingredients">onion</li>
+                <li class="level-ingredients">carrot</li>
+                <li class="level-ingredients">garlic</li>
+                <li class="level-ingredients">lemon</li>
+                <li class="level-ingredients">potato</li>
+              </ul>
+            </div>
+            <div class="points-required-flex">
+              <div class="points-required">
+                <p id="fifty-points" class="hide">Need 25 Points to Continue</p>
+                <p id="hundred-points" class="hide">Need 50 Points to Continue</p>
+                <p id="hundred-fifty-points" class="hide">Need 75 to Continue</p>
+                <p id="two-hundred-points" class="hide">Need 100 Points</p>
+                <p id="three-hundred-points" class="hide">Need 200 Points to Win</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="pots">
         <div class="pot hole-1">
@@ -341,14 +359,36 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
       <div id="chef">
 
       </div>
-      <div class=button>
-      <div class="start-div">
-        <button class="start-button">Start</button>
       </div>
-    </div>
+      <div class="start-button-div hide">
+        <div class="start-div">
+          <button class="start-button">Start</button>
+        </div>
       </div>
     </main>
     <footer>
+      Created by Amir Sohi
     </footer>
-  </body>
+    <audio src="/sounds/hit1.wav" class="hit"></audio>
+    <audio src="/sounds/hit2.wav" class="hit"></audio>
+    <audio src="/sounds/hit3.wav" class="hit"></audio>
+    <audio src="/sounds/hit4.wav" class="hit"></audio>
+    <audio src="/sounds/hit5.wav" class="hit"></audio>
+    <audio src="/sounds/hit6.wav" class="hit"></audio>
+    <audio src="/sounds/hit7.wav" class="hit"></audio>
+    <audio src="/sounds/lose-level.wav" id="lose-level"></audio>
+    <audio src="/sounds/password-incorrect.wav" id="password-incorrect"></audio>
+    <audio src="/sounds/password-unlock.wav" id="password-unlock"></audio>
+    <audio src="/sounds/start.wav" id="start-sound"></audio>
+    <audio src="/sounds/win-level.wav" id="win-level-sound"></audio>
+    <audio src="/sounds/wrong-ingredient.wav" id="wrong-ingredient-sound"></audio>
+    <audio src="/sounds/chef-man.wav" id="chef-man-sound"></audio>
+    <audio src="/sounds/ramen-girl2.wav" id="ramen-girl-sound"></audio>
+    <audio src="/sounds/easy-mode.wav" class="difficulty-sounds"></audio>
+    <audio src="/sounds/medium-mode.wav" class="difficulty-sounds"></audio>
+    <audio src="/sounds/hard-mode.wav" class="difficulty-sounds"></audio>
+    <audio src="/sounds/popup1.wav" class="pop-up-sound"></audio>
+    <audio src="/sounds/popup2.wav" class="pop-up-sound"></audio>
+    <audio src="/sounds/popup3.wav" class="pop-up-sound"></audio>
+    <audio src="/sounds/popup4.wav" class="pop-up-sound"></audio>
 </html>

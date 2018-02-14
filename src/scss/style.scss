@@ -2,7 +2,7 @@
 
 body {
   background-color: green;
-  font-family: 'BioRhyme Expanded', serif;
+  font-family: arial, serif;
 }
 
 header{
@@ -38,29 +38,65 @@ h2 {
 }
 
 .instructions-screen{
+  width: 400px;
   margin: 0 auto;
   border: 3px solid black;
+}
+.instructions{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.difficulty{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.difficulty-explanation{
+  height: 50px;
+  width: 200px;
+  border: 2px solid black;
+}
+
+#character-selection{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.instructions{
-  text-align: center;
-}
-.difficulty-explanation{
-  text-align: center;
-}
-.difficulty-buttons{
+
+.characters-div{
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.recipe{
+.difficulties-div{
+  margin-top: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
+
+.password-input{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.selection-title{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.difficulty-explanation{
+  text-align: center;
+}
+
 .recipe-ingredients{
   margin-right: 20px;
 }
@@ -69,9 +105,7 @@ h2 {
   border-radius: 50%;
 }
 .next-level-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 .main-container {
@@ -84,15 +118,35 @@ h2 {
   margin: auto;
 }
 
-.ingredients{
+// .ingredients{
+//   display: flex;
+//   justify-content: flex-start;
+//   flex-wrap: wrap;
+//   flex-direction: column;
+//   width: 150px;
+//   height: 300px;
+// }
+
+.ingredients-list-flex{
   border: 2px solid black;
-  width: 150px;
-  height: 400px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+}
+
+.points-required-flex{
+  border: 2px solid black;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .pots{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   border: 2px solid black;
@@ -136,11 +190,12 @@ h2 {
   background-image: url('/images/ramen-girl.gif');
 }
 
-.button{
+.start-button-div{
+  margin-left: 83px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .start-div{
@@ -158,8 +213,7 @@ h2 {
 }
 
 .point{
-  // position: absolute;
-  // z-index: 0;
+
 }
 
 .random-image {
@@ -182,6 +236,10 @@ h2 {
 
 .line-through{
   text-decoration: line-through;
+}
+
+footer{
+  text-align: center;
 }
 
 @keyframes popUp {

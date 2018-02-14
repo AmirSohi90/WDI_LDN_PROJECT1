@@ -124,6 +124,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const mainContainer = document.querySelector('.main-container');
 
+  const startBtnDiv = document.querySelector('.start-button-div');
+
   //difficulty buttons
   const difficultyButtons = document.querySelectorAll('.difficulty-buttons');
 
@@ -169,6 +171,25 @@ window.addEventListener('DOMContentLoaded', () => {
   const passwordButton = document.querySelector('.password-input-button');
   console.log(passwordButton);
 
+  //sounds
+
+  const chefManSound = document.querySelector('#chef-man-sound');
+
+  const ramenGirlSound = document.querySelector('#ramen-girl-sound');
+
+  const difficultySounds = document.querySelectorAll('.difficulty-sounds');
+  console.log(difficultySounds);
+
+  const startButtonSound = document.querySelector('#start-sound');
+
+  const hitSounds = document.querySelectorAll('.hit');
+
+  const popUpSounds = document.querySelectorAll('.pop-up-sounds');
+
+  const passwordCorrectSound = document.querySelector('#password-unlock');
+
+  const passwordIncorrectSound = document.querySelector('#password-incorrect');
+
   finalLevelDoneButton.addEventListener('click', () =>{
     congratulationsText.classList.add('hide');
     finalLevelDone.classList.add('hide');
@@ -181,12 +202,14 @@ window.addEventListener('DOMContentLoaded', () => {
     for(let i = 0; i < difficultyButtons.length; i++){
       difficultyButtons[i].disabled = true;
       ramenGirl.addEventListener('click', () => {
+        ramenGirlSound.play();
         chefBox.classList.add('ramen-girl-gif');
         ramenGirl.disabled = true;
         chefMan.disabled = true;
         difficultyButtons[i].disabled = false;
       });
       chefMan.addEventListener('click', () => {
+        chefManSound.play();
         chefBox.classList.add('chef-man-gif');
         chefMan.disabled = true;
         ramenGirl.disabled = true;
@@ -200,7 +223,10 @@ window.addEventListener('DOMContentLoaded', () => {
   passwordButton.addEventListener('click', () => {
     const password = window.prompt('Please Enter Password');
     if(password === 'iddqd'){
+      passwordCorrectSound.play();
       level = 10;
+    } else {
+      passwordIncorrectSound.play();
     }
   });
 
@@ -209,6 +235,7 @@ window.addEventListener('DOMContentLoaded', () => {
     instructionsScreen.classList.add('hide');
     difficultiesDiv.classList.add('hide');
     mainContainer.classList.remove('hide');
+    startBtnDiv.classList.remove('hide');
     spaghettiList.classList.remove('hide');
     fiftyPoints.classList.remove('hide');
     levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
@@ -216,6 +243,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < difficultyButtons.length; i++){
     difficultyButtons[i].addEventListener('click', (e) => {
+      difficultySounds[i].play();
       if(e.target.classList.contains('easy')){
         if(level === 10){
           characterSelect.classList.add('hide');
@@ -224,6 +252,7 @@ window.addEventListener('DOMContentLoaded', () => {
           roastList.classList.remove('hide');
           threeHundredPoints.classList.remove('hide');
           mainContainer.classList.remove('hide');
+          startBtnDiv.classList.remove('hide');
           difficulty = 1;
           timer = 90;
           levelDescription.textContent = 'Secret Level: Roast Chicken';
@@ -241,6 +270,7 @@ window.addEventListener('DOMContentLoaded', () => {
           roastList.classList.remove('hide');
           threeHundredPoints.classList.remove('hide');
           mainContainer.classList.remove('hide');
+          startBtnDiv.classList.remove('hide');
           difficulty = 2;
           timer = 75;
           levelDescription.textContent = 'Secret Level: Roast Chicken';
@@ -258,6 +288,7 @@ window.addEventListener('DOMContentLoaded', () => {
           roastList.classList.remove('hide');
           threeHundredPoints.classList.remove('hide');
           mainContainer.classList.remove('hide');
+          startBtnDiv.classList.remove('hide');
           difficulty = 3;
           timer = 60;
           levelDescription.textContent = 'Secret Level: Roast Chicken';
@@ -270,8 +301,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  //different recipe IDs
 
   const levelIngredients = document.querySelectorAll('.level-ingredients');
 
@@ -319,15 +348,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkAnswers(ingredients, playerIngredients) {
-    let correctIngs = 0;
-    ingredients.forEach(ing => {
-      if (playerIngredients.includes(ing)) correctIngs += 1;
-    });
-    if (correctIngs === playerIngredients.length) return true;
+    return ingredients.every(ing => playerIngredients.includes(ing));
   }
 
   function losingCondition () {
     mainContainer.classList.add('hide');
+    startBtnDiv.classList.add('hide');
     tryAgain.classList.remove('hide');
   }
 
@@ -367,7 +393,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-function winningConditions() {
+  function winningConditions() {
 
     timer -= 1;
     countdown.textContent = timer;
@@ -382,6 +408,7 @@ function winningConditions() {
       if (level === 1) {
         if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
           mainContainer.classList.add('hide');
+          startBtnDiv.classList.add('hide');
           spaghetti.classList.remove('hide');
         } else {
           losingCondition();
@@ -390,6 +417,7 @@ function winningConditions() {
       if(level === 2){
         if(checkAnswers(level2Ings, hitIngredients) && scoreCounter >= 50) {
           mainContainer.classList.add('hide');
+          startBtnDiv.classList.add('hide');
           stirFry.classList.remove('hide');
         } else {
           losingCondition();
@@ -398,6 +426,7 @@ function winningConditions() {
       if(level === 3){
         if(checkAnswers(level3Ings, hitIngredients) && scoreCounter >= 75) {
           mainContainer.classList.add('hide');
+          startBtnDiv.classList.add('hide');
           burger.classList.remove('hide');
         } else {
           losingCondition();
@@ -406,6 +435,7 @@ function winningConditions() {
       if(level === 4){
         if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100) {
           mainContainer.classList.add('hide');
+          startBtnDiv.classList.add('hide');
           paella.classList.remove('hide');
           finalLevelDone.remove('hide');
         } else {
@@ -413,8 +443,9 @@ function winningConditions() {
         }
       }
       if(level === 10){
-        if(checkAnswers(level10Ings, hitIngredients) && scoreCounter >= 100){
+        if(checkAnswers(level10Ings, hitIngredients >= 200)){
           mainContainer.classList.add('hide');
+          startBtnDiv.classList.add('hide');
           roast.classList.remove('hide');
         } else {
           losingCondition();
@@ -427,6 +458,7 @@ function winningConditions() {
   }
 
   function startGame() {
+    startButtonSound.play();
     startBtn.disabled = true;
     difficultySettings();
     countdown.textContent = timer;
@@ -442,14 +474,7 @@ function winningConditions() {
 
   startBtn.addEventListener('click', startGame);
 
-  function hit(e) {
-
-    for(let j = 0; j < levelIngredients.length; j++){
-      if(e.target.id === levelIngredients[j].textContent){
-        levelIngredients[j].classList.add('line-through');
-      }
-    }
-
+  function scoreCondtions(e) {
     if(level === 1){
       if(level1Ings.includes(e.target.id)){
         scoreCounter += 5;
@@ -495,11 +520,21 @@ function winningConditions() {
         scoreCounter -= 2;
       }
     }
+  }
+
+  function hit(e) {
+
+    for(let j = 0; j < levelIngredients.length; j++){
+      if(e.target.id === levelIngredients[j].textContent){
+        levelIngredients[j].classList.add('line-through');
+      }
+    }
+
+    scoreCondtions(e);
 
     if(scoreCounter < 0){
       scoreCounter = 0;
     }
-
     if(e.target.classList.contains('point')){
       hitIngredients.push(e.target.id);
       e.target.classList.add('hide');
@@ -507,52 +542,54 @@ function winningConditions() {
     score.textContent = scoreCounter;
   }
 
+  randomImages.forEach(pick => pick.addEventListener('click', hit));
+
   function nextLevelFunction() {
     hitIngredients= [];
     level ++;
     mainContainer.classList.remove('hide');
+    startBtnDiv.classList.remove('hide');
+  }
+
+  function nextLevelRecipeFunction() {
+    if(level === 1){
+      nextLevelFunction();
+      spaghettiList.classList.add('hide');
+      stirFryList.classList.remove('hide');
+      spaghetti.classList.add('hide');
+      fiftyPoints.classList.add('hide');
+      hundredPoints.classList.remove('hide');
+      levelDescription.textContent = 'Level 2: Stir Fry';
+      console.log(hitIngredients);
+    } else if(level === 2){
+      nextLevelFunction();
+      stirFry.classList.add('hide');
+      burgerList.classList.remove('hide');
+      stirFry.classList.add('hide');
+      stirFryList.classList.add('hide');
+      hundredPoints.classList.add('hide');
+      hundredFiftyPoints.classList.remove('hide');
+      levelDescription.textContent = 'Level 3: Burger';
+    } else if(level === 3){
+      nextLevelFunction();
+      burgerList.classList.add('hide');
+      paellaList.classList.remove('hide');
+      burger.classList.add('hide');
+      hundredFiftyPoints.classList.add('hide');
+      twoHundredPoints.classList.remove('hide');
+      levelDescription.textContent = 'Level 4: Paella';
+    } else if(level === 4){
+      paellaList.classList.add('hide');
+      paella.classList.add('hide');
+      finalLevelDone.classList.remove('hide');
+      congratulationsText.classList.remove('hide');
+    }
   }
 
   for(let i = 0; i < nextLevel.length; i++){
-    nextLevel[i].addEventListener('click', () => {
-      if(level === 1){
-        nextLevelFunction();
-        spaghettiList.classList.add('hide');
-        stirFryList.classList.remove('hide');
-        spaghetti.classList.add('hide');
-        fiftyPoints.classList.add('hide');
-        hundredPoints.classList.remove('hide');
-        levelDescription.textContent = 'Level 2: Stir Fry';
-        console.log(hitIngredients);
-      } else if(level === 2){
-        nextLevelFunction();
-        stirFry.classList.add('hide');
-        burgerList.classList.remove('hide');
-        stirFry.classList.add('hide');
-        stirFryList.classList.add('hide');
-        hundredPoints.classList.add('hide');
-        hundredFiftyPoints.classList.remove('hide');
-        levelDescription.textContent = 'Level 3: Burger';
-      } else if(level === 3){
-        nextLevelFunction();
-        burgerList.classList.add('hide');
-        paellaList.classList.remove('hide');
-        burger.classList.add('hide');
-        hundredFiftyPoints.classList.add('hide');
-        twoHundredPoints.classList.remove('hide');
-        levelDescription.textContent = 'Level 4: Paella';
-      } else if(level === 4){
-        paellaList.classList.add('hide');
-        paella.classList.add('hide');
-        finalLevelDone.classList.remove('hide');
-        congratulationsText.classList.remove('hide');
-      }
-    });
+    nextLevel[i].addEventListener('click', nextLevelRecipeFunction);
   }
 
-  finalLevelDoneButton.addEventListener('click', () => {
-    tryAgainFunction();
-  });
 
   function tryAgainFunction() {
     timer;
@@ -581,14 +618,14 @@ function winningConditions() {
     disabledButtons();
   }
 
-  tryAgainButton.addEventListener('click', () =>{
-    tryAgainFunction();
-  });
+  tryAgainButton.addEventListener('click', tryAgainFunction);
+  finalLevelDoneButton.addEventListener('click', tryAgainFunction);
 
   toCongratsPageButton.addEventListener('click', () => {
     roast.classList.add('hide');
     thanksForPlaying.classList.remove('hide');
     mainContainer.classList.add('hide');
+    startBtnDiv.classList.add('hide');
   });
 
   thanksForPlayingButton.addEventListener('click', () => {
@@ -596,6 +633,5 @@ function winningConditions() {
     tryAgainFunction();
   });
 
-  randomImages.forEach(pick => pick.addEventListener('click', hit));
 
 });
