@@ -75,6 +75,10 @@ const ingredients = [
   {
     name: 'clock',
     image: '/images/clock.png'
+  },
+  {
+    name: 'potato',
+    image: '/images/potato.png'
   }
 ];
 window.addEventListener('DOMContentLoaded', () => {
@@ -92,12 +96,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const randomImages = document.querySelectorAll('.random-image');
 
+  const burger = document.querySelector('#burger');
+  const spaghetti = document.querySelector('#spaghetti');
+  const stirFry = document.querySelector('#stir-fry');
+  const paella = document.querySelector('#paella');
+  const roast = document.querySelector('#roast');
   const spaghettiList = document.querySelector('#spaghetti-list');
   const stirFryList = document.querySelector('#stir-fry-list');
   const burgerList = document.querySelector('#burger-list');
   const paellaList = document.querySelector('#paella-list');
   const roastList = document.querySelector('#roast-list');
   const nextLevel = document.querySelectorAll('.next-level-button');
+
+  console.log(nextLevel);
 
   const mainContainer = document.querySelector('.main-container');
 
@@ -128,16 +139,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const characterSelect = document.querySelector('#character-selection');
 
-  const congratsButton = document.querySelector('#congratulations-button');
+  const thanksForPlaying = document.querySelector('#thanks');
+  const thanksForPlayingButton = document.querySelector('#thanks-button');
+
+  const toCongratsPageButton = document.querySelector('#take-me-home');
 
   const chefBox = document.querySelector('#chef');
 
-  const finalLevelDone = document.querySelector('.password-shown');
+  const finalLevelDone = document.querySelector('#password-shown');
 
-  const finalLevelDoneButton = document.querySelector('.back-to-home-screen');
+  const finalLevelDoneButton = document.querySelector('#back-to-home-screen');
+  console.log(finalLevelDone);
+  console.log(congratulationsText);
+
+  const congratulationsText = document.querySelector('#congrats-and-password');
 
   const passwordButton = document.querySelector('.password-input-button');
   console.log(passwordButton);
+
+  finalLevelDoneButton.addEventListener('click', () =>{
+    congratulationsText.classList.add('hide');
+    finalLevelDone.classList.add('hide');
+    tryAgainFunction();
+  });
 
   function disabledButtons(){
     ramenGirl.disabled = false;
@@ -162,11 +186,21 @@ window.addEventListener('DOMContentLoaded', () => {
   disabledButtons();
 
   passwordButton.addEventListener('click', () => {
-  let password = window.prompt('Please Enter Password');
+    const password = window.prompt('Please Enter Password');
     if(password === 'iddqd'){
       level = 10;
     }
   });
+
+  function firstLevelFunction() {
+    characterSelect.classList.add('hide');
+    instructionsScreen.classList.add('hide');
+    difficultiesDiv.classList.add('hide');
+    mainContainer.classList.remove('hide');
+    spaghettiList.classList.remove('hide');
+    fiftyPoints.classList.remove('hide');
+    levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+  }
 
   for (let i = 0; i < difficultyButtons.length; i++){
     difficultyButtons[i].addEventListener('click', (e) => {
@@ -184,14 +218,8 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
           level = 1;
           difficulty = 1;
-          timer = 60;
-          characterSelect.classList.add('hide');
-          instructionsScreen.classList.add('hide');
-          difficultiesDiv.classList.add('hide');
-          mainContainer.classList.remove('hide');
-          spaghettiList.classList.remove('hide');
-          fiftyPoints.classList.remove('hide');
-          levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+          timer = 120;
+          firstLevelFunction();
         }
       } else if(e.target.classList.contains('medium')){
         if(level === 10){
@@ -208,13 +236,7 @@ window.addEventListener('DOMContentLoaded', () => {
           level = 1;
           difficulty = 2;
           timer = 50;
-          characterSelect.classList.add('hide');
-          instructionsScreen.classList.add('hide');
-          difficultiesDiv.classList.add('hide');
-          mainContainer.classList.remove('hide');
-          spaghettiList.classList.remove('hide');
-          fiftyPoints.classList.remove('hide');
-          levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+          firstLevelFunction();
         }
       } else if(e.target.classList.contains('hard')) {
         if(level === 10){
@@ -231,24 +253,13 @@ window.addEventListener('DOMContentLoaded', () => {
           level = 1;
           difficulty = 3;
           timer = 45;
-          characterSelect.classList.add('hide');
-          instructionsScreen.classList.add('hide');
-          difficultiesDiv.classList.add('hide');
-          mainContainer.classList.remove('hide');
-          spaghettiList.classList.remove('hide');
-          fiftyPoints.classList.remove('hide');
-          levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+          firstLevelFunction();
         }
       }
     });
   }
 
   //different recipe IDs
-  const burger = document.querySelector('#burger');
-  const spaghetti = document.querySelector('#spaghetti');
-  const stirFry = document.querySelector('#stir-fry');
-  const paella = document.querySelector('#paella');
-  const roast = document.querySelector('#roast');
 
   const levelIngredients = document.querySelectorAll('.level-ingredients');
 
@@ -299,22 +310,22 @@ window.addEventListener('DOMContentLoaded', () => {
     startBtn.disabled = true;
     if(difficulty === 1){
       if(level === 10){
-        timer = 90;
-        max = 2500;
-        min = 1500;
+        timer = 100;
+        max = 2250;
+        min = 1250;
       } else {
-        timer = 60;
+        timer = 120;
         max = 2500;
         min = 1500;
       }
     }
     if (difficulty === 2){
       if(level === 10){
-        timer = 75;
-        max = 2000;
+        timer = 85;
+        max = 1750;
         min = 1000;
       } else {
-        timer = 50;
+        timer = 105;
         max = 2000;
         min = 1000;
       }
@@ -322,10 +333,10 @@ window.addEventListener('DOMContentLoaded', () => {
     if (difficulty === 3){
       if(level === 10){
         timer = 60;
-        max = 1500;
+        max = 1250;
         min = 500;
       } else {
-        timer = 45;
+        timer = 60;
         max = 1500;
         min = 500;
       }
@@ -385,6 +396,15 @@ window.addEventListener('DOMContentLoaded', () => {
             tryAgain.classList.remove('hide');
           }
         }
+        if(level === 10){
+          if(hitIngredients.includes('chicken') && hitIngredients.includes('onion') && hitIngredients.includes('carrot') && hitIngredients.includes('garlic') && hitIngredients.includes('lemon') && hitIngredients.includes('potato')){
+            mainContainer.classList.add('hide');
+            roast.classList.remove('hide');
+          } else {
+            mainContainer.classList.add('hide');
+            tryAgain.classList.remove('hide');
+          }
+        }
         startBtn.disabled = false;
         clearInterval(timerId);
         timeUp = true;
@@ -438,6 +458,15 @@ window.addEventListener('DOMContentLoaded', () => {
         scoreCounter -= 2;
       }
     }
+    if(level === 10){
+      if(e.target.id === 'chicken' || e.target.id === 'onion' || e.target.id === 'carrot' || e.target.id === 'garlic' || e.target.id === 'lemon' || e.target.id === 'potato'){
+        scoreCounter +=5;
+      } else if(e.target.id === 'clock'){
+        timer += 5;
+      } else {
+        scoreCounter -= 2;
+      }
+    }
 
     if(scoreCounter < 0){
       scoreCounter = 0;
@@ -479,17 +508,23 @@ window.addEventListener('DOMContentLoaded', () => {
       } else if(level === 3){
         nextLevelFunction();
         burgerList.classList.add('hide');
-        paella.classList.remove('hide');
         paellaList.classList.remove('hide');
         burger.classList.add('hide');
         hundredFiftyPoints.classList.add('hide');
         twoHundredPoints.classList.remove('hide');
         levelDescription.textContent = 'Level 4: Paella';
+      } else if(level === 4){
+        paellaList.classList.add('hide');
+        paella.classList.add('hide');
+        finalLevelDone.classList.remove('hide');
+        congratulationsText.classList.remove('hide');
       }
     });
   }
 
-
+  finalLevelDoneButton.addEventListener('click', () => {
+    tryAgainFunction();
+  });
 
   function tryAgainFunction() {
     timer;
@@ -506,10 +541,30 @@ window.addEventListener('DOMContentLoaded', () => {
     instructionsScreen.classList.remove('hide');
     difficultiesDiv.classList.remove('hide');
     characterSelect.classList.remove('hide');
+    burgerList.classList.add('hide');
+    stirFryList.classList.add('hide');
+    roastList.classList.add('hide');
+    paellaList.classList.add('hide');
+    fiftyPoints.classList.add('hide');
+    hundredPoints.classList.add('hide');
+    hundredFiftyPoints.classList.add('hide');
+    twoHundredPoints.classList.add('hide');
+    threeHundredPoints.classList.add('hide');
     disabledButtons();
   }
 
   tryAgainButton.addEventListener('click', () =>{
+    tryAgainFunction();
+  });
+
+  toCongratsPageButton.addEventListener('click', () => {
+    roast.classList.add('hide');
+    thanksForPlaying.classList.remove('hide');
+    mainContainer.classList.add('hide');
+  });
+
+  thanksForPlayingButton.addEventListener('click', () => {
+    roast.classList.add('hide');
     tryAgainFunction();
   });
 
