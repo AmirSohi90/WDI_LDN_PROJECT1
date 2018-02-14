@@ -7,6 +7,7 @@ let max = 0;
 let difficulty = 0;
 let level = 0;
 let hitIngredients = [];
+let timerId = null;
 
 const level1Ings = ['beef', 'onion', 'garlic', 'carrot', 'tomato', 'cheese'];
 
@@ -330,8 +331,7 @@ window.addEventListener('DOMContentLoaded', () => {
     tryAgain.classList.remove('hide');
   }
 
-  function startGame() {
-    startBtn.disabled = true;
+  function difficultySettings() {
     if(difficulty === 1){
       if(level === 10){
         timer = 100;
@@ -365,6 +365,70 @@ window.addEventListener('DOMContentLoaded', () => {
         min = 500;
       }
     }
+  }
+
+function winningConditions() {
+
+    timer -= 1;
+    countdown.textContent = timer;
+    if(timer === 0){
+
+      for(let j = 0; j < levelIngredients.length; j++){
+        if (levelIngredients[j].classList.contains('line-through')){
+          levelIngredients[j].classList.remove('line-through');
+        }
+      }
+
+      if (level === 1) {
+        if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
+          mainContainer.classList.add('hide');
+          spaghetti.classList.remove('hide');
+        } else {
+          losingCondition();
+        }
+      }
+      if(level === 2){
+        if(checkAnswers(level2Ings, hitIngredients) && scoreCounter >= 50) {
+          mainContainer.classList.add('hide');
+          stirFry.classList.remove('hide');
+        } else {
+          losingCondition();
+        }
+      }
+      if(level === 3){
+        if(checkAnswers(level3Ings, hitIngredients) && scoreCounter >= 75) {
+          mainContainer.classList.add('hide');
+          burger.classList.remove('hide');
+        } else {
+          losingCondition();
+        }
+      }
+      if(level === 4){
+        if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100) {
+          mainContainer.classList.add('hide');
+          paella.classList.remove('hide');
+          finalLevelDone.remove('hide');
+        } else {
+          losingCondition();
+        }
+      }
+      if(level === 10){
+        if(checkAnswers(level10Ings, hitIngredients) && scoreCounter >= 100){
+          mainContainer.classList.add('hide');
+          roast.classList.remove('hide');
+        } else {
+          losingCondition();
+        }
+      }
+      startBtn.disabled = false;
+      clearInterval(timerId);
+      timeUp = true;
+    }
+  }
+
+  function startGame() {
+    startBtn.disabled = true;
+    difficultySettings();
     countdown.textContent = timer;
     if(level === 1) {
       scoreCounter = 0;
@@ -372,63 +436,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     timeUp = false;
     peak();
-    const timerId = setInterval(() => {
-      timer -= 1;
-      countdown.textContent = timer;
-      if(timer === 0){
-
-        for(let j = 0; j < levelIngredients.length; j++){
-          if (levelIngredients[j].classList.contains('line-through')){
-            levelIngredients[j].classList.remove('line-through');
-          }
-        }
-
-        if (level === 1) {
-          if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
-            mainContainer.classList.add('hide');
-            spaghetti.classList.remove('hide');
-          } else {
-            losingCondition();
-          }
-        }
-        if(level === 2){
-          if(checkAnswers(level2Ings, hitIngredients) && scoreCounter >= 50) {
-            mainContainer.classList.add('hide');
-            stirFry.classList.remove('hide');
-          } else {
-            losingCondition();
-          }
-        }
-        if(level === 3){
-          if(checkAnswers(level3Ings, hitIngredients) && scoreCounter >= 75) {
-            mainContainer.classList.add('hide');
-            burger.classList.remove('hide');
-          } else {
-            losingCondition();
-          }
-        }
-        if(level === 4){
-          if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100) {
-            mainContainer.classList.add('hide');
-            paella.classList.remove('hide');
-            finalLevelDone.remove('hide');
-          } else {
-            losingCondition();
-          }
-        }
-        if(level === 10){
-          if(checkAnswers(level10Ings, hitIngredients) && scoreCounter >= 100){
-            mainContainer.classList.add('hide');
-            roast.classList.remove('hide');
-          } else {
-            losingCondition();
-          }
-        }
-        startBtn.disabled = false;
-        clearInterval(timerId);
-        timeUp = true;
-      }
-    }, 1000);
+    timerId = setInterval(winningConditions, 1000);
   }
 
 
