@@ -7,6 +7,17 @@ let max = 0;
 let difficulty = 0;
 let level = 0;
 let hitIngredients = [];
+
+const level1Ings = ['beef', 'onion', 'garlic', 'carrot', 'tomato', 'cheese'];
+
+const level2Ings = ['garlic', 'chicken', 'pepper', 'soy sauce', 'peas'];
+
+const level3Ings = ['beef', 'egg', 'lettuce', 'onion', 'gherkin', 'cheese', 'buns'];
+
+const level4Ings = ['onion', 'tomato', 'chicken', 'prawn', 'lemon'];
+
+const level10Ings = ['chicken', 'onion', 'carrot', 'garlic', 'lemon', 'potato'];
+
 const ingredients = [
   {
     name: 'carrot',
@@ -306,6 +317,18 @@ window.addEventListener('DOMContentLoaded', () => {
     return time, randomImage;
   }
 
+  function checkAnswers(ingredients, playerIngredients) {
+    let correctIngs = 0;
+    ingredients.forEach(ing => {
+      if (playerIngredients.includes(ing)) correctIngs += 1;
+    });
+    if (correctIngs === playerIngredients.length) return true;
+  }
+  function losingCondition () {
+    mainContainer.classList.add('hide');
+    tryAgain.classList.remove('hide');
+  }
+
   function startGame() {
     startBtn.disabled = true;
     if(difficulty === 1){
@@ -352,57 +375,52 @@ window.addEventListener('DOMContentLoaded', () => {
       timer -= 1;
       countdown.textContent = timer;
       if(timer === 0){
+
         for(let j = 0; j < levelIngredients.length; j++){
           if (levelIngredients[j].classList.contains('line-through')){
             levelIngredients[j].classList.remove('line-through');
           }
         }
-        if(level === 1){
-          if(hitIngredients.includes('beef') && hitIngredients.includes('onion') && hitIngredients.includes('garlic') && hitIngredients.includes('carrot') && hitIngredients.includes('tomato') && hitIngredients.includes('cheese') && scoreCounter >= 25) {
-            console.log(hitIngredients);
+
+        if (level === 1) {
+          if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
             mainContainer.classList.add('hide');
             spaghetti.classList.remove('hide');
           } else {
-            console.log(hitIngredients);
-            mainContainer.classList.add('hide');
-            tryAgain.classList.remove('hide');
+            losingCondition();
           }
         }
         if(level === 2){
-          if(hitIngredients.includes('garlic') && hitIngredients.includes('chicken') && hitIngredients.includes('pepper') && hitIngredients.includes('soy sauce') && hitIngredients.includes('peas') && scoreCounter >= 50){
+          if(checkAnswers(level2Ings, hitIngredients) && scoreCounter >= 50) {
             mainContainer.classList.add('hide');
             stirFry.classList.remove('hide');
           } else {
-            mainContainer.classList.add('hide');
-            tryAgain.classList.remove('hide');
+            losingCondition();
           }
         }
         if(level === 3){
-          if(hitIngredients.includes('beef') && hitIngredients.includes('egg') && hitIngredients.includes('lettuce') && hitIngredients.includes('onion') && hitIngredients.includes('gherkin') && hitIngredients.includes('cheese') && hitIngredients.includes('buns') && scoreCounter >= 75){
+          if(checkAnswers(level3Ings, hitIngredients) && scoreCounter >= 75) {
             mainContainer.classList.add('hide');
             burger.classList.remove('hide');
           } else {
-            mainContainer.classList.add('hide');
-            tryAgain.classList.remove('hide');
+            losingCondition();
           }
         }
         if(level === 4){
-          if(hitIngredients.includes('onion') && hitIngredients.includes('tomato') && hitIngredients.includes('chicken') && hitIngredients.includes('prawn') && hitIngredients.includes('lemon') && scoreCounter >= 100) {
+          if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100) {
             mainContainer.classList.add('hide');
             paella.classList.remove('hide');
             finalLevelDone.remove('hide');
           } else {
-            mainContainer.classList.add('hide');
-            tryAgain.classList.remove('hide');
+            losingCondition();
           }
         }
         if(level === 10){
-          if(hitIngredients.includes('chicken') && hitIngredients.includes('onion') && hitIngredients.includes('carrot') && hitIngredients.includes('garlic') && hitIngredients.includes('lemon') && hitIngredients.includes('potato')){
+          if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100){
             mainContainer.classList.add('hide');
             roast.classList.remove('hide');
           } else {
-            mainContainer.classList.add('hide');
-            tryAgain.classList.remove('hide');
+            losingCondition();
           }
         }
         startBtn.disabled = false;
@@ -411,6 +429,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }, 1000);
   }
+
 
   startBtn.addEventListener('click', startGame);
 
