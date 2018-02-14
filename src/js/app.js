@@ -139,27 +139,27 @@ window.addEventListener('DOMContentLoaded', () => {
   const passwordButton = document.querySelector('.password-input-button');
   console.log(passwordButton);
 
-  // function disabledButtons(){
-  //   ramenGirl.disabled = false;
-  //   chefMan.disabled = false;
-  //   for(let i = 0; i < difficultyButtons.length; i++){
-  //     difficultyButtons[i].disabled = true;
-  //     ramenGirl.addEventListener('click', () => {
-  //       // chefBox.classList.add('ramen-girl-gif');
-  //       ramenGirl.disabled = true;
-  //       chefMan.disabled = true;
-  //       difficultyButtons[i].disabled = false;
-  //     });
-  //     chefMan.addEventListener('click', () => {
-  //       // chefBox.classList.add('chef-man-gif');
-  //       chefMan.disabled = true;
-  //       ramenGirl.disabled = true;
-  //       difficultyButtons[i].disabled = false;
-  //     });
-  //   }
-  // }
+  function disabledButtons(){
+    ramenGirl.disabled = false;
+    chefMan.disabled = false;
+    for(let i = 0; i < difficultyButtons.length; i++){
+      difficultyButtons[i].disabled = true;
+      ramenGirl.addEventListener('click', () => {
+        chefBox.classList.add('ramen-girl-gif');
+        ramenGirl.disabled = true;
+        chefMan.disabled = true;
+        difficultyButtons[i].disabled = false;
+      });
+      chefMan.addEventListener('click', () => {
+        chefBox.classList.add('chef-man-gif');
+        chefMan.disabled = true;
+        ramenGirl.disabled = true;
+        difficultyButtons[i].disabled = false;
+      });
+    }
+  }
 
-  // disabledButtons();
+  disabledButtons();
 
   passwordButton.addEventListener('click', () => {
   let password = window.prompt('Please Enter Password');
@@ -201,13 +201,13 @@ window.addEventListener('DOMContentLoaded', () => {
           roastList.classList.remove('hide');
           threeHundredPoints.classList.remove('hide');
           mainContainer.classList.remove('hide');
-          difficulty = 1;
-          timer = 90;
+          difficulty = 2;
+          timer = 75;
           levelDescription.textContent = 'Secret Level: Roast Chicken';
         } else {
           level = 1;
-          difficulty = 1;
-          timer = 60;
+          difficulty = 2;
+          timer = 50;
           characterSelect.classList.add('hide');
           instructionsScreen.classList.add('hide');
           difficultiesDiv.classList.add('hide');
@@ -224,13 +224,13 @@ window.addEventListener('DOMContentLoaded', () => {
           roastList.classList.remove('hide');
           threeHundredPoints.classList.remove('hide');
           mainContainer.classList.remove('hide');
-          difficulty = 1;
-          timer = 90;
+          difficulty = 3;
+          timer = 60;
           levelDescription.textContent = 'Secret Level: Roast Chicken';
         } else {
           level = 1;
-          difficulty = 1;
-          timer = 60;
+          difficulty = 3;
+          timer = 45;
           characterSelect.classList.add('hide');
           instructionsScreen.classList.add('hide');
           difficultiesDiv.classList.add('hide');
@@ -298,17 +298,37 @@ window.addEventListener('DOMContentLoaded', () => {
   function startGame() {
     startBtn.disabled = true;
     if(difficulty === 1){
-      timer = 60;
-      max = 2500;
-      min = 1500;
-    } else if (difficulty === 2){
-      timer = 50;
-      max = 2000;
-      min = 1000;
-    } else if (difficulty === 3){
-      timer = 45;
-      max = 1500;
-      min = 500;
+      if(level === 10){
+        timer = 90;
+        max = 2500;
+        min = 1500;
+      } else {
+        timer = 60;
+        max = 2500;
+        min = 1500;
+      }
+    }
+    if (difficulty === 2){
+      if(level === 10){
+        timer = 75;
+        max = 2000;
+        min = 1000;
+      } else {
+        timer = 50;
+        max = 2000;
+        min = 1000;
+      }
+    }
+    if (difficulty === 3){
+      if(level === 10){
+        timer = 60;
+        max = 1500;
+        min = 500;
+      } else {
+        timer = 45;
+        max = 1500;
+        min = 500;
+      }
     }
     countdown.textContent = timer;
     if(level === 1) {
