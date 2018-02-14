@@ -324,6 +324,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     if (correctIngs === playerIngredients.length) return true;
   }
+
   function losingCondition () {
     mainContainer.classList.add('hide');
     tryAgain.classList.remove('hide');
@@ -416,7 +417,7 @@ window.addEventListener('DOMContentLoaded', () => {
           }
         }
         if(level === 10){
-          if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100){
+          if(checkAnswers(level10Ings, hitIngredients) && scoreCounter >= 100){
             mainContainer.classList.add('hide');
             roast.classList.remove('hide');
           } else {
@@ -442,7 +443,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     if(level === 1){
-      if(e.target.id === 'beef' || e.target.id === 'onion' || e.target.id === 'garlic' || e.target.id === 'carrot' || e.target.id === 'tomato' || e.target.id === 'cheese'){
+      if(level1Ings.includes(e.target.id)){
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
         timer += 5;
@@ -451,7 +452,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
     if(level === 2){
-      if(e.target.id === 'garlic' || e.target.id === 'chicken' || e.target.id === 'pepper' || e.target.id === 'soy sauce' || e.target.id === 'peas'){
+      if(level2Ings.includes(e.target.id)){
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
         timer += 5;
@@ -460,7 +461,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
     if(level === 3){
-      if(e.target.id === 'beef' || e.target.id === 'egg' || e.target.id === 'lettuce' || e.target.id === 'onion' || e.target.id === 'gherkin' || e.target.id === 'cheese' || e.target.id === 'buns'){
+      if(level3Ings.includes(e.target.id)){
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
         timer += 5;
@@ -469,7 +470,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
     if(level === 4){
-      if(e.target.id === 'onion' || e.target.id === 'tomato' || e.target.id === 'chicken' || e.target.id === 'prawn'){
+      if(level4Ings.includes(e.target.id)){
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
         timer += 5;
@@ -478,7 +479,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
     if(level === 10){
-      if(e.target.id === 'chicken' || e.target.id === 'onion' || e.target.id === 'carrot' || e.target.id === 'garlic' || e.target.id === 'lemon' || e.target.id === 'potato'){
+      if(level10Ings.includes(e.target.id)){
         scoreCounter +=5;
       } else if(e.target.id === 'clock'){
         timer += 5;
