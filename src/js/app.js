@@ -190,6 +190,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const nextLevelSound = document.querySelector('#next-level-sound');
 
+  //start screen functions
+  score.textContent = scoreCounter;
+  countdown.textContent = timer;
+
   function disabledButtons() {
     ramenGirl.disabled = false;
     chefMan.disabled = false;
@@ -220,6 +224,7 @@ window.addEventListener('DOMContentLoaded', () => {
       passwordCorrect.play();
       level = 10;
       passwordButton.disabled = true;
+      passwordButton.style.cursor = 'not-allowed';
     } else {
       passwordIncorrect.play();
     }
@@ -227,15 +232,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
   passwordButton.addEventListener('click', passwordButtonFunction);
 
-  function firstLevelFunction() {
+  function defaultLevelFunction(){
     characterSelect.classList.add('hide');
     instructionsScreen.classList.add('hide');
     difficultiesDiv.classList.add('hide');
     mainContainer.classList.remove('hide');
     startBtnDiv.classList.remove('hide');
+  }
+
+  function firstLevelFunction() {
+    defaultLevelFunction();
     spaghettiList.classList.remove('hide');
     fiftyPoints.classList.remove('hide');
     levelDescription.textContent = 'Level 1: Spaghetti Bolognese';
+  }
+
+  function difficultyLevelTenSettings() {
+    defaultLevelFunction();
+    roastList.classList.remove('hide');
+    threeHundredPoints.classList.remove('hide');
+    levelDescription.textContent = 'Secret Level: Roast Chicken';
   }
 
   for (let i = 0; i < difficultyButtons.length; i++){
@@ -243,16 +259,9 @@ window.addEventListener('DOMContentLoaded', () => {
       difficultySounds[i].play();
       if(e.target.classList.contains('easy')){
         if(level === 10){
-          characterSelect.classList.add('hide');
-          instructionsScreen.classList.add('hide');
-          difficultiesDiv.classList.add('hide');
-          roastList.classList.remove('hide');
-          threeHundredPoints.classList.remove('hide');
-          mainContainer.classList.remove('hide');
-          startBtnDiv.classList.remove('hide');
+          difficultyLevelTenSettings();
           difficulty = 1;
           timer = 90;
-          levelDescription.textContent = 'Secret Level: Roast Chicken';
         } else {
           level = 1;
           difficulty = 1;
@@ -261,16 +270,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       } else if(e.target.classList.contains('medium')){
         if(level === 10){
-          characterSelect.classList.add('hide');
-          instructionsScreen.classList.add('hide');
-          difficultiesDiv.classList.add('hide');
-          roastList.classList.remove('hide');
-          threeHundredPoints.classList.remove('hide');
-          mainContainer.classList.remove('hide');
-          startBtnDiv.classList.remove('hide');
+          difficultyLevelTenSettings();
           difficulty = 2;
           timer = 75;
-          levelDescription.textContent = 'Secret Level: Roast Chicken';
         } else {
           level = 1;
           difficulty = 2;
@@ -279,16 +281,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       } else if(e.target.classList.contains('hard')) {
         if(level === 10){
-          characterSelect.classList.add('hide');
-          instructionsScreen.classList.add('hide');
-          difficultiesDiv.classList.add('hide');
-          roastList.classList.remove('hide');
-          threeHundredPoints.classList.remove('hide');
-          mainContainer.classList.remove('hide');
-          startBtnDiv.classList.remove('hide');
+          difficultyLevelTenSettings();
           difficulty = 3;
           timer = 60;
-          levelDescription.textContent = 'Secret Level: Roast Chicken';
         } else {
           level = 1;
           difficulty = 3;
@@ -301,8 +296,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const levelIngredients = document.querySelectorAll('.level-ingredients');
 
-  score.textContent = scoreCounter;
-  countdown.textContent = timer;
 
   function randomTime(min, max) {
     const popUpTime = Math.round(Math.random() * (max-min) + min);
@@ -713,6 +706,5 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   finalLevelDoneButton.addEventListener('click', finalLevelDoneFunction);
-
 
 });
