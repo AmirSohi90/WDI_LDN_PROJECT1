@@ -187,6 +187,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const loseSound = document.querySelector('#lose-music');
 
+  const popUpSound = document.querySelectorAll('.popup-sound');
+
+  const hitSound = document.querySelectorAll('.hit-sound');
+
+  const extraTimeSound = document.querySelector('#extra-time');
+
   finalLevelDoneButton.addEventListener('click', () =>{
     congratulationsText.classList.add('hide');
     finalLevelDone.classList.add('hide');
@@ -325,7 +331,9 @@ window.addEventListener('DOMContentLoaded', () => {
     return ingredients[index];
   }
 
-  function peak (){
+  function peak () {
+    const randomSoundIndex = Math.floor(Math.random() * 5);
+    popUpSound[randomSoundIndex].play();
     if(timer === 10){
       max -= 750;
     }
@@ -474,12 +482,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
   startBtn.addEventListener('click', startGame);
 
+  function hitSounds() {
+    const randomHitSound = Math.floor(Math.random() * 4);
+    hitSound[randomHitSound].play();
+  }
+
   function scoreCondtions(e) {
     if(level === 1){
       if(level1Ings.includes(e.target.id)){
+        hitSounds();
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
         timer += 5;
+        extraTimeSound.play();
       } else {
         scoreCounter -= 2;
       }
@@ -487,7 +502,9 @@ window.addEventListener('DOMContentLoaded', () => {
     if(level === 2){
       if(level2Ings.includes(e.target.id)){
         scoreCounter += 5;
+        hitSounds();
       } else if (e.target.id === 'clock') {
+        extraTimeSound();
         timer += 5;
       } else {
         scoreCounter -= 2;
@@ -495,8 +512,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     if(level === 3){
       if(level3Ings.includes(e.target.id)){
+        hitSounds();
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
+        extraTimeSound.play();
         timer += 5;
       } else {
         scoreCounter -= 2;
@@ -504,8 +523,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     if(level === 4){
       if(level4Ings.includes(e.target.id)){
+        hitSounds();
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
+        extraTimeSound.play();
         timer += 5;
       } else {
         scoreCounter -= 2;
@@ -513,8 +534,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     if(level === 10){
       if(level10Ings.includes(e.target.id)){
+        hitSounds();
         scoreCounter +=5;
-      } else if(e.target.id === 'clock'){
+      } else if(e.target.id === 'clock') {
+        extraTimeSound.play();
         timer += 5;
       } else {
         scoreCounter -= 2;
