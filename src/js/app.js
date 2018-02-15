@@ -179,6 +179,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const difficultySounds = document.querySelectorAll('.difficulty-sounds');
 
+  const passwordCorrect = document.querySelector('#password-correct');
+
+  const passwordIncorrect = document.querySelector('#password-incorrect');
+
+  const startMusic = document.querySelector('#start-music');
+
+  const loseSound = document.querySelector('#lose-music');
+
   finalLevelDoneButton.addEventListener('click', () =>{
     congratulationsText.classList.add('hide');
     finalLevelDone.classList.add('hide');
@@ -212,7 +220,11 @@ window.addEventListener('DOMContentLoaded', () => {
   passwordButton.addEventListener('click', () => {
     const password = window.prompt('Please Enter Password');
     if(password === 'iddqd'){
+      passwordCorrect.play();
       level = 10;
+      passwordButton.disabled = true;
+    } else {
+      passwordIncorrect.play();
     }
   });
 
@@ -245,7 +257,7 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
           level = 1;
           difficulty = 1;
-          timer = 120;
+          timer = 60;
           firstLevelFunction();
         }
       } else if(e.target.classList.contains('medium')){
@@ -341,6 +353,7 @@ window.addEventListener('DOMContentLoaded', () => {
     mainContainer.classList.add('hide');
     startBtnDiv.classList.add('hide');
     tryAgain.classList.remove('hide');
+    loseSound.play();
   }
 
   function difficultySettings() {
@@ -350,18 +363,18 @@ window.addEventListener('DOMContentLoaded', () => {
         max = 2250;
         min = 1250;
       } else {
-        timer = 120;
+        timer = 60;
         max = 2500;
         min = 1500;
       }
     }
     if (difficulty === 2){
       if(level === 10){
-        timer = 85;
+        timer = 50;
         max = 1750;
         min = 1000;
       } else {
-        timer = 105;
+        timer = 45;
         max = 2000;
         min = 1000;
       }
@@ -372,7 +385,7 @@ window.addEventListener('DOMContentLoaded', () => {
         max = 1250;
         min = 500;
       } else {
-        timer = 60;
+        timer = 45;
         max = 1500;
         min = 500;
       }
@@ -384,7 +397,8 @@ window.addEventListener('DOMContentLoaded', () => {
     timer -= 1;
     countdown.textContent = timer;
     if(timer === 0){
-
+      startMusic.pause();
+      startMusic.currentTime = 0;
       for(let j = 0; j < levelIngredients.length; j++){
         if (levelIngredients[j].classList.contains('line-through')){
           levelIngredients[j].classList.remove('line-through');
@@ -445,6 +459,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function startGame() {
     startBtn.disabled = true;
+    startMusic.play();
     difficultySettings();
     countdown.textContent = timer;
     if(level === 1) {
@@ -600,6 +615,7 @@ window.addEventListener('DOMContentLoaded', () => {
     hundredFiftyPoints.classList.add('hide');
     twoHundredPoints.classList.add('hide');
     threeHundredPoints.classList.add('hide');
+    passwordButton.disabled = false;
     disabledButtons();
   }
 
