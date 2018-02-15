@@ -1,4 +1,6 @@
-
+html{
+  height: 100%;
+}
 
 body {
   background-color: green;
@@ -38,7 +40,7 @@ h2 {
 }
 
 .instructions-screen{
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
   border: 3px solid black;
 }
@@ -88,6 +90,19 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
+.try-again-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.try-again-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .selection-title{
   text-align: center;
   margin: 0 auto;
@@ -97,9 +112,27 @@ h2 {
   text-align: center;
 }
 
+.recipe{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .recipe-ingredients{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
   margin-right: 20px;
 }
+
+.method{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
 .recipe-image{
   width: 200px;
   border-radius: 50%;
@@ -118,25 +151,17 @@ h2 {
   margin: auto;
 }
 
-// .ingredients{
-//   display: flex;
-//   justify-content: flex-start;
-//   flex-wrap: wrap;
-//   flex-direction: column;
-//   width: 150px;
-//   height: 300px;
-// }
-
 .ingredients-list-flex{
   border: 2px solid black;
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   flex-direction: column;
   text-align: left;
 }
 
 .points-required-flex{
+  margin-top: 20px;
   border: 2px solid black;
   display: flex;
   justify-content: flex-start;
