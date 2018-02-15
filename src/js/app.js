@@ -58,7 +58,7 @@ const ingredients = [
   },
   {
     name: 'gherkin',
-    image: '/images/gherkin.png'
+    image: '/images/gherkin-copy.png'
   },
   {
     name: 'lemon',
@@ -82,7 +82,7 @@ const ingredients = [
   },
   {
     name: 'soy sauce',
-    image: '/images/soysauce.png'
+    image: '/images/soysauce-copy.png'
   },
   {
     name: 'clock',
@@ -90,7 +90,7 @@ const ingredients = [
   },
   {
     name: 'potato',
-    image: '/images/potato.png'
+    image: '/images/potato-copy.png'
   }
 ];
 window.addEventListener('DOMContentLoaded', () => {
