@@ -60,7 +60,7 @@ h2 {
   background-color: #a2d9ff;
   width: 960px;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 2px solid #f6dcdc;
 }
 .instructions{
   margin: 0 auto;
@@ -68,6 +68,10 @@ h2 {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.game-explanation-text{
+  padding: 0 5px;
 }
 
 .difficulty{
@@ -317,7 +321,7 @@ h2 {
 
 .ingredients-list-flex{
   width: 225px;
-  border: 1px solid black;
+  border: 2px solid #f6dcdc;
   background-color: #f5f4f4;
   display: flex;
   justify-content: flex-start;
@@ -329,7 +333,7 @@ h2 {
 .points-required-flex{
   width: 225px;
   margin-top: 20px;
-  border: 1px solid black;
+  border: 2px solid #f6dcdc;
   background-color: #f5f4f4;
   display: flex;
   justify-content: flex-start;
@@ -373,7 +377,8 @@ h2 {
   align-items: right;
   width: 115px;
   height: 115px;
-  border: 1px solid #f6dcdc;
+  border: 2px solid #f6dcdc;
+  border-radius: 3%;
 }
 
 .chef-man-gif{
@@ -403,7 +408,7 @@ h2 {
       height: 25px;
       border-radius: 2%;
       background-color: #c39d99;
-      border: 1px solid black;
+      border: 2px solid #f6dcdc;
     }
   }
 }
