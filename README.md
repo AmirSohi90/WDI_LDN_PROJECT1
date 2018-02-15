@@ -2,47 +2,50 @@
 
 # GA WDI-30 Project 1 - Click 'n' Pick-a-Pot
 
-For our first project, we were given a week to design and build an in-browser game using HTML, CSS and JavaScript. Click 'n' Pick-a-Pot was a product of my own design rather than a remake of an existing game. It requires the player to click on the correct ingredients shown on a list as they pop up whilst avoiding the wrong ones. If the player gets all of the ingredients and the required points they are shown the recipe for a certain dish, depending on the level. The game has 4 levels and a secret bonus level that is only accessed through a password after completing level 4.
+For our first project, we were given a week to design and build an in-browser game using HTML, CSS and JavaScript. Click 'n' Pick-a-Pot was a product of my own design rather than a remake of an existing game. It requires the player to click on the correct ingredients shown on a list as they pop up whilst avoiding the wrong ones. If the player gets all of the ingredients and the required points they are shown the recipe for a certain dish, depending on the level. The game has 4 levels and a secret bonus level that is only accessed through a password after completing level 4. It also includes 3 difficulty settings.
 
 ##### [Visit website](https://wee-words.herokuapp.com/) for best playing experience (the game was not designed for mobile).
 
 ---
 
-###### WeeWords takes place in a 100% CSS-built and animated environment, with the weather changing on each level as the player progresses.
+###### Click 'n' Pick-a-Pot takes place in a 100% CSS-built environment.
 
-<p align="center"><img src="https://imgur.com/8llXrdZ.png" width="700"></p>
+<p align="center"><img src="https://i.imgur.com/cVwtEj7.png" width="700"></p>
 
-###### Level one gives the player 30 seconds to fulfil the required score, using any letters they can see on screen. The letters are picked at random from a weighted alphabet (so that you get more E’s than Z’s etc.) and assigned a random position on screen. They shrink and fade away after a set period of time, at which point they become unavailable for use in the player’s words.
+###### Each level gives the player 60/50/45 seconds (depending on difficulty) to collect the correct ingredients with the requirement of getting a certain number of points. The ingredients that are shown are random and stay on screen for a random amount of time, depending on the difficulty.
 
-<p align="center"><img src="https://imgur.com/Z2mQLZf.png" width="700"></p>
+<p align="center"><img src="https://i.imgur.com/bV6dWH1.png" width="700"></p>
 
-###### In level two, the difficulty increases as the player is only able to use blue letters. In level 3, the player may only use red letters and words under 4 letters long are not allowed.
+###### Once the level is completed and if the player has won they're shown a recipe using the ingredients they had to click on
 
-<p align="center"><img src="https://imgur.com/3yyNskp.png" width="700"></p>
+<p align="center"><img src="https://i.imgur.com/yNoirS5.png" width="700"></p>
 
-<p align="center"><img src="https://imgur.com/L1Ij5dt.png" width="700"></p>
+###### The win logic requires a submitted ingredient to fulfil the conditions depending on the level:
 
-<p align="center"><img src="https://imgur.com/Fx0ZE8B.png" width="700"></p>
-
-###### The win logic requires a submitted word to fulfil a number of conditions to be passed as a valid word:
-
-###### * The word is a correctly spelt English word (checked against an array of English words).
-###### * The word is made up of letters that are present in an ever-changing array of letters in play.
-###### * The word has not previously been entered during the level.
-###### * The word consists of 4 letters or more (Level 3 only).
+###### * The ingredients clicked on match the ingredients displayed
+###### * The player has reached the required number of points
 
 ```
-function returnResult() {
-  if (wordIsValid === true && invalidLetters.length === 0 && wordIsRepeat === false) {
-    $wordLog.append($(`<span>${submittedWord}</span>`).addClass('green'));
-    scoreUpdate();
-  } else {
-    $wordLog.append($(`<span>${submittedWord}</span>`).addClass('red'));
+function levelOneWinningConditionsFunction() {
+  if (level === 1) {
+    if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
+      mainContainer.classList.add('hide');
+      startBtnDiv.classList.add('hide');
+      spaghetti.classList.remove('hide');
+      winSound.play();
+    } else {
+      losingCondition();
+    }
   }
 }
 ```
 
-###### If level 3 is beaten, the player is presented with a final score (the sum of each level score) and can restart the entire game and try to beat it.
+###### If level 4 is beaten, the player is presented with a congratulatory message with a password to the secret level.
+
+<p align="center"><img src="https://i.imgur.com/0olouaM.png" width="700"></p>
+
+---
+I found making a function that returns a random image pop up for a random amount of time challenging however when I made two separate functions calculating a random time and a random image, merging the two together helped.
 
 ---
 
