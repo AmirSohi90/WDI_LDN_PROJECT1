@@ -1,16 +1,15 @@
 html{
   height: 100%;
+  background-color: #b95337;
 }
 
 body {
-  background-color: green;
   font-family: arial, serif;
 }
 
 header{
   height: 30px;
   font-size: 10px;
-  background-color: grey;
   text-align: center;
 }
 
@@ -23,7 +22,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   height: 50px;
-  background-color: blue;
   margin-bottom: 5px;
   .time{
     width: 50px;
@@ -40,7 +38,8 @@ h2 {
 }
 
 .instructions-screen{
-  width: 600px;
+  background-color: #a2d9ff;
+  width: 800px;
   margin: 0 auto;
   border: 3px solid black;
 }
@@ -60,9 +59,18 @@ h2 {
 }
 
 .difficulty-explanation{
+  flex-wrap: wrap;
   height: 50px;
   width: 200px;
-  border: 2px solid black;
+  border: 0.5px solid black;
+}
+
+.easy-explanation{
+  background-color: #ffa200;
+}
+
+.medium-explanation{
+  
 }
 
 #character-selection{
@@ -86,6 +94,7 @@ h2 {
 
 .password-input{
   margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,16 +137,44 @@ h2 {
 
 .method{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  text-align: left;
   flex-wrap: wrap;
   width: 600px;
+}
+
+.final-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.password-button-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thanks-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thanks-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .recipe-image{
   width: 200px;
   border-radius: 50%;
 }
-.next-level-button{
+.end-button{
+  width: 200px;
+  margin: 0 auto;
+  display: block;
 
 }
 
