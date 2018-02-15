@@ -534,8 +534,8 @@ window.addEventListener('DOMContentLoaded', () => {
         scoreCounter += 5;
         hitSounds();
       } else if (e.target.id === 'clock') {
-        extraTimeSound();
         timer += 5;
+        extraTimeSound.play();
       } else {
         badHitSounds();
         scoreCounter -= 2;
@@ -546,8 +546,8 @@ window.addEventListener('DOMContentLoaded', () => {
         hitSounds();
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
-        extraTimeSound.play();
         timer += 5;
+        extraTimeSound.play();
       } else {
         badHitSounds();
         scoreCounter -= 2;
@@ -558,8 +558,8 @@ window.addEventListener('DOMContentLoaded', () => {
         hitSounds();
         scoreCounter += 5;
       } else if (e.target.id === 'clock') {
-        extraTimeSound.play();
         timer += 5;
+        extraTimeSound.play();
       } else {
         badHitSounds();
         scoreCounter -= 2;
@@ -570,8 +570,8 @@ window.addEventListener('DOMContentLoaded', () => {
         hitSounds();
         scoreCounter +=5;
       } else if(e.target.id === 'clock') {
-        extraTimeSound.play();
         timer += 5;
+        extraTimeSound.play();
       } else {
         badHitSounds();
         scoreCounter -= 2;
