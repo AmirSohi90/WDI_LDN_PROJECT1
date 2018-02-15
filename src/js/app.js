@@ -104,8 +104,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const startBtn = document.querySelector('.start-button');
 
-  // const pots = document.querySelectorAll('.pot');
-
   const randomImages = document.querySelectorAll('.random-image');
 
   const burger = document.querySelector('#burger');
@@ -120,13 +118,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const roastList = document.querySelector('#roast-list');
   const nextLevel = document.querySelectorAll('.next-level-button');
 
-  console.log(nextLevel);
-
   const mainContainer = document.querySelector('.main-container');
 
   const startBtnDiv = document.querySelector('.start-button-div');
 
-  //difficulty buttons
   const difficultyButtons = document.querySelectorAll('.difficulty-buttons');
 
   const difficultiesDiv = document.querySelector('.difficulties');
@@ -154,6 +149,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const characterSelect = document.querySelector('#character-selection');
 
   const thanksForPlaying = document.querySelector('#thanks');
+
   const thanksForPlayingButton = document.querySelector('#thanks-button');
 
   const toCongratsPageButton = document.querySelector('#take-me-home');
@@ -163,15 +159,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const finalLevelDone = document.querySelector('#password-shown');
 
   const finalLevelDoneButton = document.querySelector('#back-to-home-screen');
-  console.log(finalLevelDone);
-  console.log(congratulationsText);
 
   const congratulationsText = document.querySelector('#congrats-and-password');
 
   const passwordButton = document.querySelector('.password-input-button');
-  console.log(passwordButton);
-
-  //sounds
 
   const chefManSound = document.querySelector('#chef-man-sound');
 
@@ -193,13 +184,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const extraTimeSound = document.querySelector('#extra-time');
 
-  finalLevelDoneButton.addEventListener('click', () =>{
-    congratulationsText.classList.add('hide');
-    finalLevelDone.classList.add('hide');
-    tryAgainFunction();
-  });
+  const badHitSound = document.querySelectorAll('.badhit');
 
-  function disabledButtons(){
+  const winSound = document.querySelector('#win-sound');
+
+  const nextLevelSound = document.querySelector('#next-level-sound');
+
+  function disabledButtons() {
     ramenGirl.disabled = false;
     chefMan.disabled = false;
     for(let i = 0; i < difficultyButtons.length; i++){
@@ -223,7 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   disabledButtons();
 
-  passwordButton.addEventListener('click', () => {
+  function passwordButtonFunction () {
     const password = window.prompt('Please Enter Password');
     if(password === 'iddqd'){
       passwordCorrect.play();
@@ -232,7 +223,9 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
       passwordIncorrect.play();
     }
-  });
+  }
+
+  passwordButton.addEventListener('click', passwordButtonFunction);
 
   function firstLevelFunction() {
     characterSelect.classList.add('hide');
@@ -364,7 +357,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loseSound.play();
   }
 
-  function difficultySettings() {
+  function easyDifficultySetting() {
     if(difficulty === 1){
       if(level === 10){
         timer = 100;
@@ -376,6 +369,9 @@ window.addEventListener('DOMContentLoaded', () => {
         min = 1500;
       }
     }
+  }
+
+  function mediumDifficultySetting() {
     if (difficulty === 2){
       if(level === 10){
         timer = 50;
@@ -387,6 +383,9 @@ window.addEventListener('DOMContentLoaded', () => {
         min = 1000;
       }
     }
+  }
+
+  function hardDifficultySetting() {
     if (difficulty === 3){
       if(level === 10){
         timer = 60;
@@ -396,6 +395,78 @@ window.addEventListener('DOMContentLoaded', () => {
         timer = 45;
         max = 1500;
         min = 500;
+      }
+    }
+  }
+
+  function difficultySettings() {
+    easyDifficultySetting();
+    mediumDifficultySetting();
+    hardDifficultySetting();
+  }
+
+  function levelOneWinningConditionsFunction() {
+    if (level === 1) {
+      if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
+        mainContainer.classList.add('hide');
+        startBtnDiv.classList.add('hide');
+        spaghetti.classList.remove('hide');
+        winSound.play();
+      } else {
+        losingCondition();
+      }
+    }
+  }
+
+  function levelTwoWinningConditionsFunction() {
+    if(level === 2){
+      if(checkAnswers(level2Ings, hitIngredients) && scoreCounter >= 50) {
+        mainContainer.classList.add('hide');
+        startBtnDiv.classList.add('hide');
+        stirFry.classList.remove('hide');
+        winSound.play();
+      } else {
+        losingCondition();
+      }
+    }
+  }
+
+  function levelThreeWinningConditionsFunction() {
+    if(level === 3){
+      if(checkAnswers(level3Ings, hitIngredients) && scoreCounter >= 75) {
+        mainContainer.classList.add('hide');
+        startBtnDiv.classList.add('hide');
+        burger.classList.remove('hide');
+        winSound();
+      } else {
+        losingCondition();
+      }
+    }
+  }
+
+  function levelFourWinningConditionsFunction() {
+    if(level === 4){
+      if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100) {
+        mainContainer.classList.add('hide');
+        startBtnDiv.classList.add('hide');
+        paella.classList.remove('hide');
+        finalLevelDone.remove('hide');
+        winSound();
+      } else {
+        losingCondition();
+      }
+    }
+  }
+
+  function levelTenWinningConditionsFunction() {
+    if(level === 10){
+      if(checkAnswers(level10Ings, hitIngredients)){
+        mainContainer.classList.add('hide');
+        startBtnDiv.classList.add('hide');
+        roast.classList.remove('hide');
+        winSound();
+      } else {
+        losingCondition();
       }
     }
   }
@@ -413,52 +484,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      if (level === 1) {
-        if (checkAnswers(level1Ings, hitIngredients) && scoreCounter >= 25) {
-          mainContainer.classList.add('hide');
-          startBtnDiv.classList.add('hide');
-          spaghetti.classList.remove('hide');
-        } else {
-          losingCondition();
-        }
-      }
-      if(level === 2){
-        if(checkAnswers(level2Ings, hitIngredients) && scoreCounter >= 50) {
-          mainContainer.classList.add('hide');
-          startBtnDiv.classList.add('hide');
-          stirFry.classList.remove('hide');
-        } else {
-          losingCondition();
-        }
-      }
-      if(level === 3){
-        if(checkAnswers(level3Ings, hitIngredients) && scoreCounter >= 75) {
-          mainContainer.classList.add('hide');
-          startBtnDiv.classList.add('hide');
-          burger.classList.remove('hide');
-        } else {
-          losingCondition();
-        }
-      }
-      if(level === 4){
-        if(checkAnswers(level4Ings, hitIngredients) && scoreCounter >= 100) {
-          mainContainer.classList.add('hide');
-          startBtnDiv.classList.add('hide');
-          paella.classList.remove('hide');
-          finalLevelDone.remove('hide');
-        } else {
-          losingCondition();
-        }
-      }
-      if(level === 10){
-        if(checkAnswers(level10Ings, hitIngredients)){
-          mainContainer.classList.add('hide');
-          startBtnDiv.classList.add('hide');
-          roast.classList.remove('hide');
-        } else {
-          losingCondition();
-        }
-      }
+      levelOneWinningConditionsFunction();
+      levelTwoWinningConditionsFunction();
+      levelThreeWinningConditionsFunction();
+      levelFourWinningConditionsFunction();
+      levelTenWinningConditionsFunction();
+
       startBtn.disabled = false;
       clearInterval(timerId);
       timeUp = true;
@@ -487,6 +518,11 @@ window.addEventListener('DOMContentLoaded', () => {
     hitSound[randomHitSound].play();
   }
 
+  function badHitSounds() {
+    const randomHitSound = Math.floor(Math.random() * 3);
+    badHitSound[randomHitSound].play();
+  }
+
   function scoreCondtions(e) {
     if(level === 1){
       if(level1Ings.includes(e.target.id)){
@@ -496,6 +532,7 @@ window.addEventListener('DOMContentLoaded', () => {
         timer += 5;
         extraTimeSound.play();
       } else {
+        badHitSounds();
         scoreCounter -= 2;
       }
     }
@@ -507,6 +544,7 @@ window.addEventListener('DOMContentLoaded', () => {
         extraTimeSound();
         timer += 5;
       } else {
+        badHitSounds();
         scoreCounter -= 2;
       }
     }
@@ -518,6 +556,7 @@ window.addEventListener('DOMContentLoaded', () => {
         extraTimeSound.play();
         timer += 5;
       } else {
+        badHitSounds();
         scoreCounter -= 2;
       }
     }
@@ -529,6 +568,7 @@ window.addEventListener('DOMContentLoaded', () => {
         extraTimeSound.play();
         timer += 5;
       } else {
+        badHitSounds();
         scoreCounter -= 2;
       }
     }
@@ -540,6 +580,7 @@ window.addEventListener('DOMContentLoaded', () => {
         extraTimeSound.play();
         timer += 5;
       } else {
+        badHitSounds();
         scoreCounter -= 2;
       }
     }
@@ -566,8 +607,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   randomImages.forEach(pick => pick.addEventListener('click', hit));
+  randomImages.forEach(pick => pick.addEventListener('mouseover', () =>{
+    pick.style.cursor = 'pointer';
+  }));
 
   function nextLevelFunction() {
+    nextLevelSound.play();
     hitIngredients= [];
     level ++;
     mainContainer.classList.remove('hide');
@@ -613,7 +658,6 @@ window.addEventListener('DOMContentLoaded', () => {
     nextLevel[i].addEventListener('click', nextLevelRecipeFunction);
   }
 
-
   function tryAgainFunction() {
     timer;
     lastImage;
@@ -645,18 +689,30 @@ window.addEventListener('DOMContentLoaded', () => {
   tryAgainButton.addEventListener('click', tryAgainFunction);
   finalLevelDoneButton.addEventListener('click', tryAgainFunction);
 
-  toCongratsPageButton.addEventListener('click', () => {
+  function toCongratsPageButtonFunction() {
     roast.classList.add('hide');
     thanksForPlaying.classList.remove('hide');
     mainContainer.classList.add('hide');
     startBtnDiv.classList.add('hide');
-  });
+  }
 
-  thanksForPlayingButton.addEventListener('click', () => {
+  toCongratsPageButton.addEventListener('click', toCongratsPageButtonFunction);
+
+  function thanksForPlayingFunction() {
     thanksForPlaying.classList.add('hide');
     roast.classList.add('hide');
     tryAgainFunction();
-  });
+  }
+
+  thanksForPlayingButton.addEventListener('click', thanksForPlayingFunction);
+
+  function finalLevelDoneFunction() {
+    congratulationsText.classList.add('hide');
+    finalLevelDone.classList.add('hide');
+    tryAgainFunction();
+  }
+
+  finalLevelDoneButton.addEventListener('click', finalLevelDoneFunction);
 
 
 });
