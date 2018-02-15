@@ -58,6 +58,7 @@ h2 {
 
 .instructions-screen{
   background-color: #a2d9ff;
+  width: 960px;
   margin: 0 auto;
   border: 1px solid black;
 }
@@ -111,16 +112,16 @@ h2 {
     font-size: 15px;
     outline: none;
     border: none;
-    width: 150px;
-    height: 25px;
+    width: 115px;
+    height: 115px;
     border-radius: 2%;
   }
   #chef-man-button{
-      background-color: #cfa097;
+      background: url("/images/chef-man-still.png");
       border: 1px solid #61adfd;
   }
   #ramen-girl-button{
-    background-color: #61adfd;
+    background: url("/images/ramen-girl-still.png");
     border: 1px solid #cfa097;
   }
 }
@@ -170,6 +171,7 @@ h2 {
 }
 
 .try-again-text{
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,6 +181,18 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  #try-again{
+    margin-top: 50px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 25px;
+    border-radius: 2%;
+    background-color: #c39d99;
+    border: 1px solid black;
+  }
 }
 
 .selection-title{
@@ -190,7 +204,11 @@ h2 {
   text-align: center;
 }
 
-
+.recipes{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 .recipe{
   display: flex;
   flex-wrap: wrap;
@@ -226,6 +244,7 @@ h2 {
 }
 
 .thanks-text{
+  font-size: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -242,10 +261,48 @@ h2 {
   border-radius: 50%;
 }
 .end-button{
+  font-family: 'Indie Flower', cursive;
+  font-size: 15px;
+  outline: none;
+  border: none;
   width: 200px;
+  height: 25px;
+  border-radius: 2%;
+  background-color: #c39d99;
+  border: 1px solid black;
   margin: 0 auto;
   display: block;
 
+}
+
+#back-to-home-screen{
+  font-family: 'Indie Flower', cursive;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  width: 200px;
+  height: 25px;
+  border-radius: 2%;
+  background-color: #c39d99;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: block;
+}
+
+
+
+#thanks-button{
+  font-family: 'Indie Flower', cursive;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  width: 200px;
+  height: 25px;
+  border-radius: 2%;
+  background-color: #c39d99;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: block;
 }
 
 .main-container {
@@ -351,6 +408,18 @@ h2 {
   }
 }
 
+.next-level-button{
+  font-family: 'Indie Flower', cursive;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 125px;
+  border-radius: 3%;
+  background-color: #c39d99;
+  border: 1px solid black;
+}
+
 
 .timer-countdown, .score-board{
   line-height: 3rem;
@@ -388,6 +457,9 @@ h2 {
 
 footer{
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 @keyframes popUp {

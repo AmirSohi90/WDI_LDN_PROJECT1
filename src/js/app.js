@@ -178,17 +178,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const ramenGirlSound = document.querySelector('#ramen-girl-sound');
 
   const difficultySounds = document.querySelectorAll('.difficulty-sounds');
-  console.log(difficultySounds);
-
-  const startButtonSound = document.querySelector('#start-sound');
-
-  const hitSounds = document.querySelectorAll('.hit');
-
-  const popUpSounds = document.querySelectorAll('.pop-up-sounds');
-
-  const passwordCorrectSound = document.querySelector('#password-unlock');
-
-  const passwordIncorrectSound = document.querySelector('#password-incorrect');
 
   finalLevelDoneButton.addEventListener('click', () =>{
     congratulationsText.classList.add('hide');
@@ -202,8 +191,8 @@ window.addEventListener('DOMContentLoaded', () => {
     for(let i = 0; i < difficultyButtons.length; i++){
       difficultyButtons[i].disabled = true;
       ramenGirl.addEventListener('click', () => {
-        ramenGirlSound.play();
         chefBox.classList.add('ramen-girl-gif');
+        ramenGirlSound.play();
         ramenGirl.disabled = true;
         chefMan.disabled = true;
         difficultyButtons[i].disabled = false;
@@ -223,10 +212,7 @@ window.addEventListener('DOMContentLoaded', () => {
   passwordButton.addEventListener('click', () => {
     const password = window.prompt('Please Enter Password');
     if(password === 'iddqd'){
-      passwordCorrectSound.play();
       level = 10;
-    } else {
-      passwordIncorrectSound.play();
     }
   });
 
@@ -244,7 +230,6 @@ window.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < difficultyButtons.length; i++){
     difficultyButtons[i].addEventListener('click', (e) => {
       difficultySounds[i].play();
-      console.log(difficultySounds[i]);
       if(e.target.classList.contains('easy')){
         if(level === 10){
           characterSelect.classList.add('hide');
@@ -444,7 +429,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       }
       if(level === 10){
-        if(checkAnswers(level10Ings, hitIngredients >= 200)){
+        if(checkAnswers(level10Ings, hitIngredients)){
           mainContainer.classList.add('hide');
           startBtnDiv.classList.add('hide');
           roast.classList.remove('hide');
@@ -459,7 +444,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
-    startButtonSound.play();
     startBtn.disabled = true;
     difficultySettings();
     countdown.textContent = timer;
@@ -630,6 +614,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   thanksForPlayingButton.addEventListener('click', () => {
+    thanksForPlaying.classList.add('hide');
     roast.classList.add('hide');
     tryAgainFunction();
   });
