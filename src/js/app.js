@@ -492,6 +492,9 @@ window.addEventListener('DOMContentLoaded', () => {
   function startGame() {
     startBtn.disabled = true;
     startMusic.play();
+    if(startMusic.currentTime === 0){
+      startMusic.play();
+    }
     difficultySettings();
     countdown.textContent = timer;
     if(level === 1) {
