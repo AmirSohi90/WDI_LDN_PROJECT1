@@ -18,13 +18,6 @@ header{
   }
 }
 
-
-h2 {
-  font-size: 20px;
-  text-align: center;
-  text-decoration: underline;
-}
-
 .time-and-score{
   display: flex;
   justify-content: space-between;
@@ -37,6 +30,9 @@ h2 {
     border: 1px solid black;
     text-align: center;
     margin-left: 100px;
+    .timer-countdown{
+      line-height: 3rem;
+    }
   }
   .score{
     width: 50px;
@@ -45,6 +41,9 @@ h2 {
     border: 1px solid black;
     text-align: center;
     margin-right: 100px;
+    .score-board{
+      line-height: 3rem;
+    }
   }
   .level-description{
     text-align: center;
@@ -62,116 +61,111 @@ h2 {
   width: 960px;
   margin: 0 auto;
   border: 2px solid #f6dcdc;
-}
-.instructions{
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.game-explanation-text{
-  padding: 0 5px;
-}
-
-.difficulty{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-}
-
-.difficulty-explanation{
-  flex-wrap: wrap;
-  height: 50px;
-  width: 300px;
-  border: 2px solid #f6dcdc;
-}
-
-.easy-explanation{
-  background-color: #cadda5;
-}
-
-.medium-explanation{
-  background-color: #e8d055;
-}
-
-.hard-explanation{
-  background-color: #c0244a;
-}
-
-#character-selection{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.characters-div{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 20px;
-  .fighter{
-    font-family: 'Indie Flower', cursive;
-    font-size: 15px;
-    outline: none;
-    border: none;
-    width: 115px;
-    height: 115px;
-    border-radius: 2%;
+  .instructions{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .game-explanation-text{
+      padding: 0 5px;
+    }
   }
-  #chef-man-button{
+  .difficulty{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    .difficulty-explanation{
+      text-align: center;
+      flex-wrap: wrap;
+      height: 50px;
+      width: 300px;
+      border: 2px solid #f6dcdc;
+    }
+    .easy-explanation{
+      background-color: #cadda5;
+    }
+    .medium-explanation{
+      background-color: #e8d055;
+    }
+    .hard-explanation{
+      background-color: #c0244a;
+    }
+  }
+  #character-selection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .selection-title{
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+  .characters-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    .fighter{
+      font-family: 'Indie Flower', cursive;
+      font-size: 15px;
+      outline: none;
+      border: none;
+      width: 115px;
+      height: 115px;
+      border-radius: 2%;
+    }
+    #chef-man-button{
       background: url("/images/chef-man-still.png");
       border: 2px solid #f6dcdc;
+    }
+    #ramen-girl-button{
+      background: url("/images/ramen-girl-still.png");
+      border: 2px solid #f6dcdc;
+    }
   }
-  #ramen-girl-button{
-    background: url("/images/ramen-girl-still.png");
-    border: 2px solid #f6dcdc;
+  .difficulties-div{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .difficulty-buttons{
+      font-family: 'Indie Flower', cursive;
+      font-size: 15px;
+      outline: none;
+      border: none;
+      width: 100px;
+      height: 25px;
+      border-radius: 2%;
+    }
+    .easy{
+      background-color: #cadda5;
+    }
+    .medium{
+      background-color: #e8d055;
+    }
+    .hard{
+      background-color: #c0244a;
+    }
   }
-}
-
-.difficulties-div{
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .difficulty-buttons{
-    font-family: 'Indie Flower', cursive;
-    font-size: 15px;
-    outline: none;
-    border: none;
-    width: 100px;
-    height: 25px;
-    border-radius: 2%;
-  }
-  .easy{
-    background-color: #cadda5;
-  }
-  .medium{
-    background-color: #e8d055;
-  }
-  .hard{
-    background-color: #c0244a;
-  }
-}
-
-.password-input{
-  margin-top: 20px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .password-input-button{
-    font-family: 'Indie Flower', cursive;
-    background-color: #624c34;
-    color: white;
-    font-size: 15px;
-    outline: none;
-    border: none;
-    width: 100px;
-    height: 25px;
-    border-radius: 2%;
+  .password-input{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .password-input-button{
+      font-family: 'Indie Flower', cursive;
+      background-color: #624c34;
+      color: white;
+      font-size: 15px;
+      outline: none;
+      border: none;
+      width: 100px;
+      height: 25px;
+      border-radius: 2%;
+    }
   }
 }
 
@@ -181,7 +175,6 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-
 .try-again-button{
   display: flex;
   justify-content: center;
@@ -200,114 +193,103 @@ h2 {
   }
 }
 
-.selection-title{
-  text-align: center;
-  margin: 0 auto;
-}
-
-.difficulty-explanation{
-  text-align: center;
-}
-
 .recipes{
   display: flex;
   justify-content: center;
   margin-top: 20px;
-}
-.recipe{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.recipe-ingredients{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  width: 200px;
-  margin-right: 20px;
-}
-
-.method{
-  display: flex;
-  justify-content: center;
-  text-align: left;
-  flex-wrap: wrap;
-  width: 600px;
+  .recipe{
+    display: flex;
+    flex-wrap: wrap;
+    .recipe-ingredients{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: 200px;
+      margin-right: 20px;
+      .recipe-image{
+        width: 200px;
+        border-radius: 50%;
+      }
+    }
+    .method{
+      display: flex;
+      justify-content: center;
+      text-align: left;
+      flex-wrap: wrap;
+      width: 600px;
+      .next-level-button{
+        font-family: 'Indie Flower', cursive;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        height: 40px;
+        width: 125px;
+        border-radius: 3%;
+        background-color: #c39d99;
+        border: 1px solid black;
+      }
+      .end-button{
+        font-family: 'Indie Flower', cursive;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        width: 200px;
+        height: 25px;
+        border-radius: 2%;
+        background-color: #c39d99;
+        border: 1px solid black;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
 }
 
 .final-page{
   display: flex;
   justify-content: center;
   align-items: center;
+  .password-button-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #back-to-home-screen{
+      font-family: 'Indie Flower', cursive;
+      font-size: 15px;
+      outline: none;
+      border: none;
+      width: 200px;
+      height: 25px;
+      border-radius: 2%;
+      background-color: #c39d99;
+      border: 1px solid black;
+      margin: 0 auto;
+      display: block;
+    }
+  }
 }
 
-.password-button-screen{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.thanks-text{
-  font-size: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.thanks-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.recipe-image{
-  width: 200px;
-  border-radius: 50%;
-}
-.end-button{
-  font-family: 'Indie Flower', cursive;
-  font-size: 15px;
-  outline: none;
-  border: none;
-  width: 200px;
-  height: 25px;
-  border-radius: 2%;
-  background-color: #c39d99;
-  border: 1px solid black;
-  margin: 0 auto;
-  display: block;
-
-}
-
-#back-to-home-screen{
-  font-family: 'Indie Flower', cursive;
-  font-size: 15px;
-  outline: none;
-  border: none;
-  width: 200px;
-  height: 25px;
-  border-radius: 2%;
-  background-color: #c39d99;
-  border: 1px solid black;
-  margin: 0 auto;
-  display: block;
-}
-
-
-
-#thanks-button{
-  font-family: 'Indie Flower', cursive;
-  font-size: 15px;
-  outline: none;
-  border: none;
-  width: 200px;
-  height: 25px;
-  border-radius: 2%;
-  background-color: #c39d99;
-  border: 1px solid black;
-  margin: 0 auto;
-  display: block;
+.thanks-for-playing{
+  .thanks-text{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #thanks-button{
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    width: 200px;
+    height: 25px;
+    border-radius: 2%;
+    background-color: #c39d99;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 .main-container {
@@ -318,28 +300,31 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
-}
-
-.ingredients-list-flex{
-  width: 225px;
-  border: 2px solid #f6dcdc;
-  background-color: #f5f4f4;
-  display: flex;
-  justify-content: flex-start;
-  // flex-wrap: wrap;
-  flex-direction: column;
-  text-align: left;
-}
-
-.points-required-flex{
-  width: 225px;
-  margin-top: 20px;
-  border: 2px solid #f6dcdc;
-  background-color: #f5f4f4;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  .ingredients-list-flex{
+    width: 225px;
+    border: 2px solid #f6dcdc;
+    background-color: #f5f4f4;
+    display: flex;
+    justify-content: flex-start;
+    // flex-wrap: wrap;
+    flex-direction: column;
+    text-align: left;
+    h2 {
+      font-size: 20px;
+      text-align: center;
+      text-decoration: underline;
+    }
+  }
+  .points-required-flex{
+    width: 225px;
+    margin-top: 20px;
+    border: 2px solid #f6dcdc;
+    background-color: #f5f4f4;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .pots{
@@ -352,24 +337,22 @@ h2 {
   width: 400px;
   height: 400px;
   margin: 0 20px;
-}
-
-.pot{
-  position: relative;
-  width: 115px;
-  height: 115px;
-  margin: 0 9px;
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-  margin: auto;
-  flex-direction: column;
-}
-
-.front-pot{
-  position: absolute;
-  top: 66px;
-  z-index: 1;
+  .pot{
+    position: relative;
+    width: 115px;
+    height: 115px;
+    margin: 0 9px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    .front-pot{
+      position: absolute;
+      top: 66px;
+      z-index: 1;
+    }
+  }
 }
 
 #chef{
@@ -412,23 +395,6 @@ h2 {
       border: 2px solid #f6dcdc;
     }
   }
-}
-
-.next-level-button{
-  font-family: 'Indie Flower', cursive;
-  font-size: 15px;
-  outline: none;
-  border: none;
-  height: 40px;
-  width: 125px;
-  border-radius: 3%;
-  background-color: #c39d99;
-  border: 1px solid black;
-}
-
-
-.timer-countdown, .score-board{
-  line-height: 3rem;
 }
 
 .hide{
