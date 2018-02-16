@@ -430,7 +430,7 @@ window.addEventListener('DOMContentLoaded', () => {
         mainContainer.classList.add('hide');
         startBtnDiv.classList.add('hide');
         burger.classList.remove('hide');
-        winSound();
+        winSound.play();
       } else {
         losingCondition();
       }
