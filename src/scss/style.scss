@@ -71,28 +71,7 @@ header{
       padding: 0 5px;
     }
   }
-  .difficulty{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    .difficulty-explanation{
-      text-align: center;
-      flex-wrap: wrap;
-      height: 50px;
-      width: 300px;
-      border: 2px solid #f6dcdc;
-    }
-    .easy-explanation{
-      background-color: #cadda5;
-    }
-    .medium-explanation{
-      background-color: #e8d055;
-    }
-    .hard-explanation{
-      background-color: #c0244a;
-    }
-  }
+
   #character-selection{
     display: flex;
     justify-content: center;
@@ -100,6 +79,10 @@ header{
     .selection-title{
       text-align: center;
       margin: 0 auto;
+      h1{
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
     }
   }
   .characters-div{
@@ -140,12 +123,27 @@ header{
       border-radius: 2%;
     }
     .easy{
+      text-align: center;
+      flex-wrap: wrap;
+      height: 50px;
+      width: 300px;
+      border: 2px solid #f6dcdc;
       background-color: #cadda5;
     }
     .medium{
+      text-align: center;
+      flex-wrap: wrap;
+      height: 50px;
+      width: 300px;
+      border: 2px solid #f6dcdc;
       background-color: #e8d055;
     }
     .hard{
+      text-align: center;
+      flex-wrap: wrap;
+      height: 50px;
+      width: 300px;
+      border: 2px solid #f6dcdc;
       background-color: #c0244a;
     }
   }
