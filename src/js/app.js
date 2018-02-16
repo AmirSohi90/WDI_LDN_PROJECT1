@@ -371,8 +371,8 @@ window.addEventListener('DOMContentLoaded', () => {
         max = 1750;
         min = 1000;
       } else {
-        timer = 45;
-        max = 2000;
+        timer = 50;
+        max = 1750;
         min = 1000;
       }
     }
