@@ -69,6 +69,7 @@ header{
     align-items: center;
     text-align: center;
     .game-explanation-text{
+      font-size: 20px;
       padding: 0 5px;
     }
   }
@@ -169,6 +170,7 @@ header{
 }
 
 .try-again-text{
+  font-size: 20px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -246,6 +248,7 @@ header{
 }
 
 .final-page{
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -305,7 +308,7 @@ header{
     background-color: #f5f4f4;
     display: flex;
     justify-content: flex-start;
-    // flex-wrap: wrap;
+    font-size: 20px;
     flex-direction: column;
     text-align: left;
     h2 {
@@ -323,6 +326,7 @@ header{
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    font-size: 20px;
   }
 }
 
