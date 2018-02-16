@@ -4,7 +4,7 @@
 
 For our first project, we were given a week to design and build an in-browser game using HTML, CSS and JavaScript. Click 'n' Pick-a-Pot was a product of my own design rather than a remake of an existing game. It requires the player to click on the correct ingredients shown on a list as they pop up whilst avoiding the wrong ones. If the player gets all of the ingredients and the required points they are shown the recipe for a certain dish, depending on the level. The game has 4 levels and a secret bonus level that is only accessed through a password after completing level 4. It also includes 3 difficulty settings.
 
-##### [Visit website](https://wee-words.herokuapp.com/) for best playing experience (the game was not designed for mobile).
+##### [Visit website](https://click-n-pick-a-pot.herokuapp.com/) for best playing experience (the game was not designed for mobile).
 
 ---
 

@@ -62,7 +62,7 @@ const ingredients = [
   },
   {
     name: 'lemon',
-    image: '/images/lemon.png'
+    image: '/images/lemon-copy.png'
   },
   {
     name: 'lettuce',
