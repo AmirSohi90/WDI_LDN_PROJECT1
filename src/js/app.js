@@ -444,7 +444,7 @@ window.addEventListener('DOMContentLoaded', () => {
         startBtnDiv.classList.add('hide');
         paella.classList.remove('hide');
         finalLevelDone.remove('hide');
-        winSound();
+        winSound.play();
       } else {
         losingCondition();
       }
@@ -457,7 +457,7 @@ window.addEventListener('DOMContentLoaded', () => {
         mainContainer.classList.add('hide');
         startBtnDiv.classList.add('hide');
         roast.classList.remove('hide');
-        winSound();
+        winSound.play();
       } else {
         losingCondition();
       }
