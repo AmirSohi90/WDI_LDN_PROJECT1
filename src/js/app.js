@@ -350,7 +350,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loseSound.play();
   }
 
-  function easyDifficultySetting() {
+  function difficultySetting(difficulty) {
     if(difficulty === 1){
       if(level === 10){
         timer = 100;
@@ -362,9 +362,6 @@ window.addEventListener('DOMContentLoaded', () => {
         min = 1500;
       }
     }
-  }
-
-  function mediumDifficultySetting() {
     if (difficulty === 2){
       if(level === 10){
         timer = 50;
@@ -376,9 +373,6 @@ window.addEventListener('DOMContentLoaded', () => {
         min = 1000;
       }
     }
-  }
-
-  function hardDifficultySetting() {
     if (difficulty === 3){
       if(level === 10){
         timer = 60;
@@ -392,11 +386,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function difficultySettings() {
-    easyDifficultySetting();
-    mediumDifficultySetting();
-    hardDifficultySetting();
-  }
+  difficultySetting(difficulty);
 
   function levelOneWinningConditionsFunction() {
     if (level === 1) {
@@ -495,7 +485,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if(startMusic.currentTime === 0){
       startMusic.play();
     }
-    difficultySettings();
+    difficultySetting(difficulty);
     countdown.textContent = timer;
     if(level === 1) {
       scoreCounter = 0;
